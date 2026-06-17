@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acceso Norte Ferroviario · Caso — VyR Ingeniería</title>
+  <meta name="description" content="Estudio de demanda y modelación multimodal para el Acceso Norte Ferroviario: matrices origen-destino, integración de telefonía móvil y evaluación de alternativas de trazado." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="case">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div class="proto-banner"><strong>Propuesta de rediseño</strong> · plantilla de caso · contenido y cifras de ejemplo</div>
+
+  <header class="site-header" id="header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="VyR Ingeniería — inicio">
+        <svg width="240" height="52" viewBox="0 0 260 56" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="V&amp;R Ingeniería">
+          <g fill="none" stroke-linecap="round" stroke-width="3.2">
+            <path class="logo-mark-1" d="M6 42 C 20 40, 28 28, 48 14" />
+            <path class="logo-mark-2" d="M6 47 C 22 45, 31 33, 51 21" />
+            <path class="logo-mark-3" d="M6 52 C 24 51, 35 44, 53 33" />
+          </g>
+          <circle class="logo-node" cx="48" cy="14" r="3.4" />
+          <text class="logo-word" x="70" y="35" font-family="'Space Grotesk',sans-serif" font-weight="600" font-size="30" letter-spacing="-0.5">V<tspan class="logo-amp">&amp;</tspan>R</text>
+          <text class="logo-sub" x="71" y="50" font-family="'Space Grotesk',sans-serif" font-weight="500" font-size="11" letter-spacing="4">INGENIERÍA</text>
+        </svg>
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+      <nav class="nav" id="nav" aria-label="Principal">
+        <a href="index.html#servicios">Servicios</a>
+        <a href="proyectos.html" aria-current="page">Proyectos</a>
+        <a href="index.html#enfoque">Enfoque</a>
+        <a href="index.html#nosotros">Nosotros</a>
+        <a class="btn btn--primary nav-cta" href="index.html#contacto">Conversemos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO DEL CASO ============ -->
+    <section class="case-hero" aria-labelledby="case-title">
+      <div class="case-hero__media">
+        <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1800&q=70" alt="" loading="eager" onerror="this.remove()" />
+      </div>
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Ruta de navegación">
+          <a href="index.html">Inicio</a> <span aria-hidden="true">/</span>
+          <a href="proyectos.html">Proyectos</a> <span aria-hidden="true">/</span>
+          <span>Acceso Norte Ferroviario</span>
+        </nav>
+        <span class="eyebrow" style="color:#fff">Sistemas ferroviarios · Modelación de demanda</span>
+        <h1 id="case-title">Estudio Acceso Norte Ferroviario</h1>
+        <p class="case-hero__sub">Modelación multimodal de demanda para evaluar alternativas de acceso ferroviario al norte de la Región Metropolitana, integrando mediciones en terreno con datos de telefonía móvil.</p>
+        <div class="case-tags">
+          <span class="case-tag">Ferroviario</span>
+          <span class="case-tag">Matriz OD</span>
+          <span class="case-tag">Geoespacial</span>
+          <span class="case-tag">Evaluación social</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MÉTRICAS DE IMPACTO ============ -->
+    <section class="section--tight">
+      <div class="container">
+        <ul class="impact reveal">
+          <div class="stat"><div class="stat__num">48<span class="unit">km</span></div><div class="stat__label">de corredor ferroviario analizado</div></div>
+          <div class="stat"><div class="stat__num">12<span class="unit">comunas</span></div><div class="stat__label">incluidas en el área de influencia</div></div>
+          <div class="stat"><div class="stat__num">3</div><div class="stat__label">alternativas de trazado evaluadas y comparadas</div></div>
+        </ul>
+        <p style="font-size:var(--t-xs);color:var(--gris-400);margin-top:.75rem">Cifras ilustrativas para efectos de la maqueta.</p>
+      </div>
+    </section>
+
+    <!-- ============ CUERPO + FICHA ============ -->
+    <section class="section" style="padding-top:1rem">
+      <div class="container">
+        <div class="case-layout">
+          <article class="case-prose reveal">
+            <h2>El contexto</h2>
+            <p>El crecimiento de la demanda de viajes en el eje norte de la Región Metropolitana planteó la necesidad de evaluar un acceso ferroviario capaz de absorber parte del tránsito y mejorar la conectividad intermodal. La decisión de inversión requería estimaciones de demanda robustas y una comparación transparente de alternativas de trazado.</p>
+
+            <h2>El desafío</h2>
+            <p>Las fuentes tradicionales de información de transporte no capturaban con suficiente resolución espacial los patrones de viaje en la zona. Se necesitaba reconstruir una matriz origen-destino confiable y proyectarla a horizontes de evaluación, integrando distintas fuentes sin perder trazabilidad metodológica.</p>
+
+            <h3>Qué hicimos</h3>
+            <ul class="ticks">
+              <li>Depuración y consolidación de mediciones de tránsito en terreno y conteos automáticos.</li>
+              <li>Construcción de una matriz origen-destino única integrando encuestas y datos anonimizados de telefonía móvil.</li>
+              <li>Modelación de la red vial y ferroviaria, y asignación multimodal de la demanda.</li>
+              <li>Evaluación social y comparación de tres alternativas de trazado bajo distintos escenarios.</li>
+            </ul>
+
+            <blockquote class="pullquote">La evidencia espacial permitió comparar alternativas sobre una base común y hacer explícito cada supuesto de demanda ante el mandante.</blockquote>
+
+            <!-- BLOQUE GEOESPACIAL -->
+            <h2>La red, visualizada</h2>
+            <p>Representación esquemática de la red analizada y de los principales flujos origen-destino sobre el corredor. La visualización geoespacial es parte del entregable: hace legible el modelo para equipos técnicos y para la toma de decisiones.</p>
+            <div class="map-block" style="margin-top:1.5rem">
+              <div class="map-block__canvas">
+                <svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" aria-label="Esquema de red ferroviaria y vial con estaciones y flujos de demanda" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="640" height="360" fill="#0B2A4A"/>
+                  <g stroke="#16467A" stroke-width="1" opacity=".6"><path d="M0 72 H640 M0 144 H640 M0 216 H640 M0 288 H640 M128 0 V360 M256 0 V360 M384 0 V360 M512 0 V360"/></g>
+                  <!-- corredor ferroviario -->
+                  <path d="M70 310 C 180 290, 250 210, 360 180 S 540 120, 590 70" fill="none" stroke="#8FB4DC" stroke-width="3"/>
+                  <!-- flujo OD -->
+                  <path d="M70 310 C 180 290, 250 210, 360 180 S 540 120, 590 70" fill="none" stroke="#1E5FA8" stroke-width="9" opacity=".35"/>
+                  <path d="M110 90 C 220 140, 280 200, 380 220 S 520 280, 590 300" fill="none" stroke="#E8772E" stroke-width="4" stroke-dasharray="1 11" stroke-linecap="round" opacity=".8"/>
+                  <!-- estaciones -->
+                  <g>
+                    <circle cx="70" cy="310" r="6" fill="#fff"/><circle cx="230" cy="232" r="5" fill="#8FB4DC"/>
+                    <circle cx="360" cy="180" r="7" fill="#E8772E"/><circle cx="470" cy="132" r="5" fill="#8FB4DC"/>
+                    <circle cx="590" cy="70" r="6" fill="#fff"/>
+                  </g>
+                  <text x="360" y="164" fill="#fff" font-family="'Space Grotesk',sans-serif" font-size="13" text-anchor="middle">Nodo intermodal</text>
+                </svg>
+              </div>
+              <div class="map-block__caption">
+                <span>Esquema ilustrativo · no representa coordenadas reales</span>
+                <div class="map-legend">
+                  <span><i style="background:#8FB4DC"></i> Corredor ferroviario</span>
+                  <span><i style="background:#E8772E"></i> Flujo OD principal</span>
+                  <span><i style="background:#fff"></i> Estación</span>
+                </div>
+              </div>
+            </div>
+
+            <h2>El resultado</h2>
+            <p>El estudio entregó una matriz origen-destino validada, proyecciones de demanda por alternativa y una evaluación que ordenó las opciones según su desempeño técnico y económico. El mandante contó con una base trazable para priorizar la inversión y avanzar a las siguientes etapas de diseño.</p>
+
+            <!-- GALERÍA -->
+            <h2>Material del proyecto</h2>
+            <div class="gallery">
+              <figure>
+                <img src="https://images.unsplash.com/photo-1556139943-4bdca53adf1e?auto=format&fit=crop&w=800&q=70" alt="Vías férreas atravesando el territorio" loading="lazy" onerror="this.closest('figure').style.display='none'" />
+                <figcaption>Corredor ferroviario en estudio · imagen referencial</figcaption>
+              </figure>
+              <figure>
+                <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=800&q=70" alt="Vista aérea de infraestructura vial" loading="lazy" onerror="this.closest('figure').style.display='none'" />
+                <figcaption>Área de influencia · toma aérea referencial</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <!-- FICHA TÉCNICA -->
+          <aside aria-label="Ficha técnica del proyecto">
+            <div class="spec-card reveal" data-delay="1">
+              <h4>Ficha técnica</h4>
+              <dl>
+                <div class="spec-row"><dt>Mandante</dt><dd>EFE — Empresa de los Ferrocarriles del Estado</dd></div>
+                <div class="spec-row"><dt>Ubicación</dt><dd>Región Metropolitana, Chile</dd></div>
+                <div class="spec-row"><dt>Año</dt><dd>2025</dd></div>
+                <div class="spec-row"><dt>Etapa</dt><dd>Perfil / Preinversión</dd></div>
+                <div class="spec-row"><dt>Servicios</dt><dd>Modelación de demanda · Matriz OD · Evaluación social</dd></div>
+                <div class="spec-row"><dt>Categoría</dt><dd>Ferroviario · Geoespacial</dd></div>
+              </dl>
+              <a class="btn btn--primary" href="index.html#contacto" style="width:100%;justify-content:center;margin-top:1.5rem">Consultar por un proyecto similar</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SIGUIENTE / VOLVER ============ -->
+    <section class="section section--dark">
+      <div class="container">
+        <div class="next-case">
+          <div>
+            <span class="eyebrow" style="color:var(--azul-300)">Seguir explorando</span>
+            <h2 style="margin-top:.75rem">Revisa el resto de la cartera</h2>
+          </div>
+          <a class="btn btn--light" href="proyectos.html">Ver todos los proyectos <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand brand">
+          <svg width="220" height="48" viewBox="0 0 260 56" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="V&amp;R Ingeniería">
+            <g fill="none" stroke-linecap="round" stroke-width="3.2">
+              <path d="M6 42 C 20 40, 28 28, 48 14" stroke="rgba(255,255,255,.9)"/>
+              <path d="M6 47 C 22 45, 31 33, 51 21" stroke="#8FB4DC"/>
+              <path d="M6 52 C 24 51, 35 44, 53 33" stroke="#E8772E"/>
+            </g>
+            <circle cx="48" cy="14" r="3.4" fill="#E8772E"/>
+            <text class="logo-word" x="70" y="35" font-family="'Space Grotesk',sans-serif" font-weight="600" font-size="30" letter-spacing="-0.5">V<tspan fill="#E8772E">&amp;</tspan>R</text>
+            <text class="logo-sub" x="71" y="50" font-family="'Space Grotesk',sans-serif" font-weight="500" font-size="11" letter-spacing="4">INGENIERÍA</text>
+          </svg>
+          <p style="color:var(--azul-300);max-width:34ch">Ingeniería precisa para sistemas de transporte complejos.</p>
+        </div>
+        <div>
+          <h4>Navegación</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#servicios">Servicios</a></li>
+            <li><a href="proyectos.html">Proyectos</a></li>
+            <li><a href="index.html#enfoque">Enfoque técnico</a></li>
+            <li><a href="index.html#nosotros">Nosotros</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul class="footer-contact">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Villaseca 21, Of. 901<br/>Ñuñoa, Santiago, Chile</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5l3-1 2 4-2 2a12 12 0 0 0 6 6l2-2 4 2-1 3a2 2 0 0 1-2 1A16 16 0 0 1 3 7a2 2 0 0 1 1-2Z"/></svg><a href="tel:+56225053378">+56 2 2505 3378</a></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg><a href="mailto:contacto@vyringenieria.cl">contacto@vyringenieria.cl</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 VyR Ingeniería. Prototipo de propuesta de rediseño.</span>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.5 8h4v12h-4V8Zm7 0h3.8v1.6h.06c.53-1 1.83-2.06 3.76-2.06 4.02 0 4.76 2.65 4.76 6.1V20h-4v-5.4c0-1.3 0-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V20h-4V8Z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.5a3 3 0 0 0-2.1-2.1C19 5 12 5 12 5s-7 0-8.9.4A3 3 0 0 0 1 7.5 31 31 0 0 0 .6 12 31 31 0 0 0 1 16.5a3 3 0 0 0 2.1 2.1C5 19 12 19 12 19s7 0 8.9-.4a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.4 12 31 31 0 0 0 23 7.5ZM9.8 15.3V8.7l5.7 3.3-5.7 3.3Z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

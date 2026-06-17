@@ -1,0 +1,83 @@
+/* VyR Ingeniería — interacciones del prototipo (vanilla JS) */
+(function () {
+  "use strict";
+
+  /* ---- Header: sólido al hacer scroll ---- */
+  var header = document.getElementById("header");
+  // Páginas sin hero oscuro arrancan con header claro
+  var hasHero = !!document.querySelector(".hero, .case-hero");
+  if (header && !hasHero) header.classList.add("is-solid");
+
+  function onScroll() {
+    if (!header || !hasHero) return;
+    header.classList.toggle("is-solid", window.scrollY > 40);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---- Nav móvil ---- */
+  var toggle = document.querySelector(".nav-toggle");
+  var nav = document.getElementById("nav");
+  if (toggle && nav) {
+    toggle.addEventListener("click", function () {
+      var open = nav.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+      document.body.classList.toggle("nav-open", open);
+    });
+    // Cerrar al navegar o con Escape
+    nav.addEventListener("click", function (e) {
+      if (e.target.closest("a")) closeNav();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && nav.classList.contains("is-open")) { closeNav(); toggle.focus(); }
+    });
+  }
+  function closeNav() {
+    if (!nav) return;
+    nav.classList.remove("is-open");
+    document.body.classList.remove("nav-open");
+    if (toggle) { toggle.setAttribute("aria-expanded", "false"); toggle.setAttribute("aria-label", "Abrir menú"); }
+  }
+
+  /* ---- Reveal on scroll ---- */
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reveals = document.querySelectorAll(".reveal");
+  if (reduce || !("IntersectionObserver" in window)) {
+    reveals.forEach(function (el) { el.classList.add("is-visible"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add("is-visible"); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---- Filtros de proyectos ---- */
+  var filterBar = document.querySelector("[data-filters]");
+  if (filterBar) {
+    var cards = Array.prototype.slice.call(document.querySelectorAll("[data-category]"));
+    var empty = document.querySelector(".filter-empty");
+    filterBar.addEventListener("click", function (e) {
+      var btn = e.target.closest(".filter-btn");
+      if (!btn) return;
+      filterBar.querySelectorAll(".filter-btn").forEach(function (b) {
+        b.classList.toggle("is-active", b === btn);
+        b.setAttribute("aria-pressed", String(b === btn));
+      });
+      var f = btn.getAttribute("data-filter");
+      var shown = 0;
+      cards.forEach(function (card) {
+        var match = f === "all" || card.getAttribute("data-category").indexOf(f) !== -1;
+        card.classList.toggle("is-hidden", !match);
+        if (match) shown++;
+      });
+      if (empty) empty.hidden = shown !== 0;
+    });
+  }
+
+  /* ---- Año dinámico en footer (si existe) ---- */
+  var y = document.querySelector("[data-year]");
+  if (y) y.textContent = new Date().getFullYear();
+})();

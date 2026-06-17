@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyectos · Cartera — VyR Ingeniería</title>
+  <meta name="description" content="Cartera de estudios y proyectos de VyR Ingeniería en sistemas ferroviarios, vialidad, concesiones, transporte público, infraestructura portuaria y planificación urbana." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="projects">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div class="proto-banner"><strong>Propuesta de rediseño</strong> · índice de proyectos · contenido de ejemplo</div>
+
+  <header class="site-header" id="header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="VyR Ingeniería — inicio">
+        <svg width="240" height="52" viewBox="0 0 260 56" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="V&amp;R Ingeniería">
+          <g fill="none" stroke-linecap="round" stroke-width="3.2">
+            <path class="logo-mark-1" d="M6 42 C 20 40, 28 28, 48 14" />
+            <path class="logo-mark-2" d="M6 47 C 22 45, 31 33, 51 21" />
+            <path class="logo-mark-3" d="M6 52 C 24 51, 35 44, 53 33" />
+          </g>
+          <circle class="logo-node" cx="48" cy="14" r="3.4" />
+          <text class="logo-word" x="70" y="35" font-family="'Space Grotesk',sans-serif" font-weight="600" font-size="30" letter-spacing="-0.5">V<tspan class="logo-amp">&amp;</tspan>R</text>
+          <text class="logo-sub" x="71" y="50" font-family="'Space Grotesk',sans-serif" font-weight="500" font-size="11" letter-spacing="4">INGENIERÍA</text>
+        </svg>
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+      <nav class="nav" id="nav" aria-label="Principal">
+        <a href="index.html#servicios">Servicios</a>
+        <a href="proyectos.html" aria-current="page">Proyectos</a>
+        <a href="index.html#enfoque">Enfoque</a>
+        <a href="index.html#nosotros">Nosotros</a>
+        <a class="btn btn--primary nav-cta" href="index.html#contacto">Conversemos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ ENCABEZADO ============ -->
+    <section class="section--alt" style="padding-top:9rem;padding-bottom:3rem">
+      <div class="container">
+        <span class="eyebrow">Trayectoria</span>
+        <h1 style="margin-top:.75rem;max-width:16ch">Cartera de proyectos</h1>
+        <p class="lead" style="margin-top:1rem;max-width:60ch">Más de 300 estudios y proyectos desde 2011, a lo largo de todo Chile. Una selección representativa por ámbito de especialidad.</p>
+      </div>
+    </section>
+
+    <!-- ============ GRILLA + FILTROS ============ -->
+    <section class="section" style="padding-top:2.5rem">
+      <div class="container">
+        <div class="filters" data-filters role="group" aria-label="Filtrar proyectos por categoría">
+          <button class="filter-btn is-active" data-filter="all" aria-pressed="true">Todos</button>
+          <button class="filter-btn" data-filter="ferroviario" aria-pressed="false">Ferroviario</button>
+          <button class="filter-btn" data-filter="vial" aria-pressed="false">Vialidad y concesiones</button>
+          <button class="filter-btn" data-filter="publico" aria-pressed="false">Transporte público</button>
+          <button class="filter-btn" data-filter="portuario" aria-pressed="false">Portuario</button>
+          <button class="filter-btn" data-filter="urbano" aria-pressed="false">Planificación urbana</button>
+        </div>
+
+        <div class="grid grid-3 project-grid">
+          <a class="project-card reveal" data-category="ferroviario" href="caso-acceso-norte.html">
+            <div class="project-card__bg"><img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" onerror="this.remove()" /></div>
+            <span class="project-card__tag">Ferroviario</span>
+            <h3>Acceso Norte Ferroviario</h3>
+            <div class="project-card__meta"><span>📍 R. Metropolitana</span><span>🗓 2025</span></div>
+          </a>
+
+          <a class="project-card reveal" data-delay="1" data-category="portuario urbano" href="#">
+            <div class="project-card__bg"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" onerror="this.remove()" /></div>
+            <span class="project-card__tag">Portuario · Urbano</span>
+            <h3>PMITP Mejillones</h3>
+            <div class="project-card__meta"><span>📍 Antofagasta</span><span>🗓 2026</span></div>
+          </a>
+
+          <a class="project-card reveal" data-delay="2" data-category="publico urbano" href="#">
+            <div class="project-card__bg"><img src="https://images.unsplash.com/photo-1473445730015-841f29a9490b?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" onerror="this.remove()" /></div>
+            <span class="project-card__tag">Transporte público</span>
+            <h3>Infraestructura complementaria · Rancagua</h3>
+            <div class="project-card__meta"><span>📍 O'Higgins</span><span>🗓 2025</span></div>
+          </a>
+
+          <a class="project-card reveal" data-category="urbano publico" href="#">
+            <div class="project-card__bg"><img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" onerror="this.remove()" /></div>
+            <span class="project-card__tag">Planificación urbana</span>
+            <h3>Plan de movilidad eje Bonilla</h3>
+            <div class="project-card__meta"><span>📍 Arica y Parinacota</span><span>🗓 2026</span></div>
+          </a>
+
+          <a class="project-card reveal" data-delay="1" data-category="vial" href="#">
+            <div class="project-card__bg"><img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" onerror="this.remove()" /></div>
+            <span class="project-card__tag">Vialidad · Concesiones</span>
+            <h3>Proyecciones de tráfico · Ruta 5</h3>
+            <div class="project-card__meta"><span>📍 Zona centro-sur</span><span>🗓 2024</span></div>
+          </a>
+
+          <a class="project-card reveal" data-delay="2" data-category="ferroviario" href="#">
+            <div class="project-card__bg"><img src="https://images.unsplash.com/photo-1535535112387-56ffe8db21ff?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" onerror="this.remove()" /></div>
+            <span class="project-card__tag">Ferroviario</span>
+            <h3>Sistema ferroviario regional</h3>
+            <div class="project-card__meta"><span>📍 Biobío</span><span>🗓 2024</span></div>
+          </a>
+
+          <a class="project-card reveal" data-category="urbano" href="#">
+            <div class="project-card__bg"><img src="https://images.unsplash.com/photo-1597076545399-91a3ff0e71b3?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" onerror="this.remove()" /></div>
+            <span class="project-card__tag">Movilidad urbana</span>
+            <h3>Estudio de teleférico urbano</h3>
+            <div class="project-card__meta"><span>📍 Valparaíso</span><span>🗓 2023</span></div>
+          </a>
+
+          <a class="project-card reveal" data-delay="1" data-category="portuario vial" href="#">
+            <div class="project-card__bg"><img src="https://images.unsplash.com/photo-1605281317010-fe5ffe798166?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" onerror="this.remove()" /></div>
+            <span class="project-card__tag">Portuario · Logística</span>
+            <h3>Accesibilidad y carga · proyectos terminales</h3>
+            <div class="project-card__meta"><span>📍 Norte de Chile</span><span>🗓 2023</span></div>
+          </a>
+
+          <a class="project-card reveal" data-delay="2" data-category="vial urbano" href="#">
+            <div class="project-card__bg"><img src="https://images.unsplash.com/photo-1545459720-aac8509eb02c?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy" onerror="this.remove()" /></div>
+            <span class="project-card__tag">Gestión de tránsito</span>
+            <h3>Estudio de impacto vial y gestión de tránsito</h3>
+            <div class="project-card__meta"><span>📍 Gran Santiago</span><span>🗓 2024</span></div>
+          </a>
+        </div>
+        <p class="filter-empty" hidden>No hay proyectos en esta categoría por ahora.</p>
+        <p style="font-size:var(--t-xs);color:var(--gris-400);margin-top:1.5rem">Selección ilustrativa para la maqueta. La cartera real se cargará desde el CMS.</p>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="section section--dark cta-band">
+      <svg class="hero__topo" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="#1E5FA8" stroke-width="1">
+          <path d="M-50 320 C 300 260, 520 400, 820 300 S 1300 220, 1500 300" opacity=".6"/>
+          <path d="M-50 360 C 320 300, 560 440, 860 340 S 1320 260, 1500 340" opacity=".4"/>
+        </g>
+      </svg>
+      <div class="container">
+        <span class="eyebrow" style="color:var(--azul-300);justify-content:center;display:flex">Conversemos</span>
+        <h2 style="margin-top:1rem">¿Tu proyecto podría ser el próximo caso?</h2>
+        <p>Trabajemos juntos desde la etapa de perfil hasta la ingeniería de detalle.</p>
+        <div class="cta-band__actions">
+          <a class="btn btn--light" href="mailto:contacto@vyringenieria.cl">Escríbenos <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--on-dark" href="index.html">Volver al inicio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand brand">
+          <svg width="220" height="48" viewBox="0 0 260 56" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="V&amp;R Ingeniería">
+            <g fill="none" stroke-linecap="round" stroke-width="3.2">
+              <path d="M6 42 C 20 40, 28 28, 48 14" stroke="rgba(255,255,255,.9)"/>
+              <path d="M6 47 C 22 45, 31 33, 51 21" stroke="#8FB4DC"/>
+              <path d="M6 52 C 24 51, 35 44, 53 33" stroke="#E8772E"/>
+            </g>
+            <circle cx="48" cy="14" r="3.4" fill="#E8772E"/>
+            <text class="logo-word" x="70" y="35" font-family="'Space Grotesk',sans-serif" font-weight="600" font-size="30" letter-spacing="-0.5">V<tspan fill="#E8772E">&amp;</tspan>R</text>
+            <text class="logo-sub" x="71" y="50" font-family="'Space Grotesk',sans-serif" font-weight="500" font-size="11" letter-spacing="4">INGENIERÍA</text>
+          </svg>
+          <p style="color:var(--azul-300);max-width:34ch">Ingeniería precisa para sistemas de transporte complejos.</p>
+        </div>
+        <div>
+          <h4>Navegación</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#servicios">Servicios</a></li>
+            <li><a href="proyectos.html">Proyectos</a></li>
+            <li><a href="index.html#enfoque">Enfoque técnico</a></li>
+            <li><a href="index.html#nosotros">Nosotros</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul class="footer-contact">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Villaseca 21, Of. 901<br/>Ñuñoa, Santiago, Chile</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5l3-1 2 4-2 2a12 12 0 0 0 6 6l2-2 4 2-1 3a2 2 0 0 1-2 1A16 16 0 0 1 3 7a2 2 0 0 1 1-2Z"/></svg><a href="tel:+56225053378">+56 2 2505 3378</a></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg><a href="mailto:contacto@vyringenieria.cl">contacto@vyringenieria.cl</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 VyR Ingeniería. Prototipo de propuesta de rediseño.</span>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.5 8h4v12h-4V8Zm7 0h3.8v1.6h.06c.53-1 1.83-2.06 3.76-2.06 4.02 0 4.76 2.65 4.76 6.1V20h-4v-5.4c0-1.3 0-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V20h-4V8Z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.5a3 3 0 0 0-2.1-2.1C19 5 12 5 12 5s-7 0-8.9.4A3 3 0 0 0 1 7.5 31 31 0 0 0 .6 12 31 31 0 0 0 1 16.5a3 3 0 0 0 2.1 2.1C5 19 12 19 12 19s7 0 8.9-.4a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.4 12 31 31 0 0 0 23 7.5ZM9.8 15.3V8.7l5.7 3.3-5.7 3.3Z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

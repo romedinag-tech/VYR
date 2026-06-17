@@ -1,0 +1,12 @@
+<svg width="260" height="56" viewBox="0 0 260 56" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="V&amp;R Ingeniería">
+  <!-- Marca: ruta multimodal ascendente (recreada, no es el logo original) -->
+  <g fill="none" stroke-linecap="round" stroke-width="3.2">
+    <path d="M6 42 C 20 40, 28 28, 48 14" stroke="#0B2A4A"/>
+    <path d="M6 47 C 22 45, 31 33, 51 21" stroke="#1E5FA8"/>
+    <path d="M6 52 C 24 51, 35 44, 53 33" stroke="#E8772E"/>
+  </g>
+  <circle cx="48" cy="14" r="3.4" fill="#E8772E"/>
+  <!-- Wordmark -->
+  <text x="70" y="35" font-family="'Space Grotesk', sans-serif" font-weight="600" font-size="30" letter-spacing="-0.5" fill="#0B2A4A">V<tspan fill="#E8772E">&amp;</tspan>R</text>
+  <text x="71" y="50" font-family="'Space Grotesk', sans-serif" font-weight="500" font-size="11" letter-spacing="4" fill="#5B6571">INGENIERÍA</text>
+</svg>
