@@ -2,6 +2,29 @@
 (function () {
   "use strict";
 
+  /* ---- Tema claro/oscuro (persistente + accesible) ---- */
+  var root = document.documentElement;
+  var STORE_KEY = "vyr-theme";
+  function applyTheme(theme) {
+    root.setAttribute("data-theme", theme);
+    var btn = document.getElementById("themeToggle");
+    if (btn) {
+      var dark = theme === "dark";
+      btn.setAttribute("aria-pressed", String(dark));
+      btn.setAttribute("aria-label", dark ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
+    }
+  }
+  // El tema inicial ya lo fija un script inline en <head> (anti-FOUC); aquí solo sincronizamos el botón.
+  applyTheme(root.getAttribute("data-theme") || "dark");
+  var themeBtn = document.getElementById("themeToggle");
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+      var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(next);
+      try { localStorage.setItem(STORE_KEY, next); } catch (e) {}
+    });
+  }
+
   /* ---- Header: sólido al hacer scroll ---- */
   var header = document.getElementById("header");
   // Páginas sin hero oscuro arrancan con header claro

@@ -32,11 +32,16 @@ vyr-rediseno/
 
 ## Sistema de diseño (resumen)
 
-- **Color:** azul profundo institucional (`#0B2A4A`) + neutros; naranjo (`#E8772E`) solo como
-  acento de dato (<5 %).
-- **Tipografía:** *Space Grotesk* (titulares) + *Inter* (texto), vía Google Fonts.
-- **Base:** mobile-first, accesible (contraste AA, foco visible, navegación por teclado,
-  `prefers-reduced-motion`), sin dependencias ni build.
+- **Tema:** **modo oscuro por defecto + modo claro** con toggle persistente
+  (`localStorage`), respeta `prefers-color-scheme` y evita FOUC con un script inline.
+  Tokens semánticos que se reasignan por tema con `[data-theme]`.
+- **Color:** azul profundo institucional (`#0B2A4A` / `#1E5FA8`, acento `#4C8DF0` en oscuro)
+  + neutros; naranjo (`#E8772E`) solo como acento.
+- **Tipografía:** *Space Grotesk* (titulares) + *Inter* (texto), escala fluida con `clamp()`.
+- **Premium UI:** glassmorphism en el header (`backdrop-filter`), soft-shadows de gran radio,
+  elevación por capas, spring-easing en micro-interacciones.
+- **Base:** mobile-first, accesible (foco visible, navegación por teclado, `prefers-reduced-motion`),
+  sin dependencias ni build.
 
 ## Cómo verlo en local
 
