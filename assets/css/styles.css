@@ -165,7 +165,11 @@ p { max-width: 68ch; }
 .site-header.is-solid { background: rgba(255,255,255,.92); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--gris-200); }
 
 .brand { display: inline-flex; align-items: center; }
-.brand svg { height: 38px; width: auto; }
+.brand img { height: 40px; width: auto; display: block; }
+/* Swap claro/oscuro del logo según el estado del header */
+.brand__color { display: none; }
+.is-solid .brand__color, .header-light .brand__color { display: block; }
+.is-solid .brand__white, .header-light .brand__white { display: none; }
 
 .nav { display: flex; align-items: center; gap: var(--s-6); }
 .nav a {
@@ -185,18 +189,6 @@ p { max-width: 68ch; }
 
 .nav-toggle { display: none; }
 
-/* Logo color flip cuando el header es claro o sólido */
-.brand .logo-word, .brand .logo-sub { fill: #fff; transition: fill .3s var(--ease); }
-.brand .logo-amp { fill: var(--dato); }
-.is-solid .brand .logo-word, .header-light .brand .logo-word { fill: var(--azul-900); }
-.is-solid .brand .logo-sub, .header-light .brand .logo-sub { fill: var(--gris-600); }
-/* Marca (líneas-ruta) */
-.brand .logo-mark-1 { stroke: rgba(255,255,255,.9); transition: stroke .3s var(--ease); }
-.brand .logo-mark-2 { stroke: var(--azul-300); transition: stroke .3s var(--ease); }
-.brand .logo-mark-3 { stroke: var(--dato); }
-.brand .logo-node  { fill: var(--dato); }
-.is-solid .brand .logo-mark-1, .header-light .brand .logo-mark-1 { stroke: var(--azul-900); }
-.is-solid .brand .logo-mark-2, .header-light .brand .logo-mark-2 { stroke: var(--azul-600); }
 
 @media (max-width: 860px) {
   .nav-toggle {
@@ -341,8 +333,7 @@ p { max-width: 68ch; }
 .site-footer h4 { color: #fff; font-size: var(--t-sm); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: var(--s-4); }
 .site-footer a { color: var(--azul-300); }
 .site-footer a:hover { color: #fff; }
-.footer-brand svg { height: 40px; margin-bottom: var(--s-5); }
-.footer-brand .logo-word { fill: #fff; } .footer-brand .logo-sub { fill: var(--azul-300); }
+.footer-brand img { height: 46px; width: auto; margin-bottom: var(--s-5); display: block; }
 .footer-links li + li { margin-top: var(--s-3); }
 .footer-contact li { margin-top: var(--s-3); display: flex; gap: var(--s-3); }
 .footer-contact svg { width: 18px; color: var(--azul-600); flex-shrink: 0; margin-top: 3px; }

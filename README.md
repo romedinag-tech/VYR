@@ -23,7 +23,9 @@ vyr-rediseno/
 ├── assets/
 │   ├── css/styles.css      ← design tokens + componentes
 │   ├── js/main.js          ← nav móvil, scroll, reveal, filtros
-│   ├── logo/vr-logo.svg    ← wordmark (recreado, no es el logo original)
+│   ├── logo/               ← logo V&R (exportado de Canva, PNG transparente)
+│   │     vr-header.png · vr-header-blanco.png (negativo) · vr-icon.png +
+│   │     favicons · vr-logo-horizontal.png (versión con lema)
 │   └── img/                ← reemplazar por fotos definitivas
 └── README.md
 ```
