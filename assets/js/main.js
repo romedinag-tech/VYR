@@ -131,6 +131,16 @@
     }
   }
 
+  /* ---- Sello de última actualización (lee la fecha del propio archivo) ---- */
+  var lu = document.querySelector("[data-lu]");
+  if (lu) {
+    var d = new Date(document.lastModified);
+    if (!isNaN(d)) {
+      var z = function (n) { return (n < 10 ? "0" : "") + n; };
+      lu.textContent = z(d.getDate()) + "-" + z(d.getMonth() + 1) + "-" + d.getFullYear() + " · " + z(d.getHours()) + ":" + z(d.getMinutes());
+    }
+  }
+
   /* ---- Año dinámico en footer (si existe) ---- */
   var y = document.querySelector("[data-year]");
   if (y) y.textContent = new Date().getFullYear();
