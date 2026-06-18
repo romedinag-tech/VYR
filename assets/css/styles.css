@@ -317,24 +317,24 @@ p { max-width: 68ch; color: var(--text-soft); }
 
 /* ---------- 9. Hero ---------- */
 .hero {
-  position: relative; min-height: 78vh; display: flex; align-items: flex-end;
-  color: var(--brand-navy); overflow: hidden; background: #EEF2F7;
+  position: relative; min-height: 82vh; display: flex; align-items: flex-end;
+  color: #fff; overflow: hidden; background: #060B13;
 }
 .hero__media { position: absolute; inset: 0; z-index: 0; }
-.hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: right center; }
-/* Scrim direccional: oscurece arriba (nav) e izquierda (texto), deja respirar la foto a la derecha.
-   Dos degradados superpuestos = legibilidad sin "apagar" la imagen. */
+.hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+/* Foto COMPLETA. Solo una sombra suave abajo-izquierda para que el texto se lea (no difumina la imagen). */
 .hero::after {
   content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  /* Velo claro a la IZQUIERDA (panel de contenido) que se desvanece para revelar la foto a la derecha */
-  background: linear-gradient(100deg, #EEF2F7 0%, #EEF2F7 50%, rgba(238,242,247,.85) 58%, rgba(238,242,247,0) 74%);
+  background:
+    linear-gradient(180deg, transparent 48%, rgba(6,11,19,.85) 100%),
+    linear-gradient(90deg, rgba(6,11,19,.5) 0%, rgba(6,11,19,.08) 40%, transparent 62%);
 }
-.hero__topo { position: absolute; inset: 0; z-index: 2; opacity: .3; mix-blend-mode: multiply; pointer-events: none; }
+.hero__topo { position: absolute; inset: 0; z-index: 2; opacity: .4; mix-blend-mode: screen; pointer-events: none; }
 .hero .container { position: relative; z-index: 3; padding-bottom: clamp(3rem, 6vh, 5rem); padding-top: 8.5rem; }
 .hero__inner { max-width: 40rem; }
 .hero__logo { height: clamp(58px, 7.5vw, 86px); width: auto; margin-bottom: var(--s-5); filter: drop-shadow(0 8px 22px rgba(11,42,74,.16)); }
-.hero h1 { color: var(--brand-navy); font-size: clamp(2.3rem, 5vw, 3.15rem); line-height: 1.06; letter-spacing: -.03em; }
-.hero p { color: #46566B; font-size: var(--t-md); margin-top: var(--s-5); max-width: 40ch; }
+.hero h1 { color: #fff; font-size: clamp(2.3rem, 5vw, 3.15rem); line-height: 1.06; letter-spacing: -.03em; text-shadow: 0 2px 32px rgba(0,0,0,.5); }
+.hero p { color: #D6E0EE; font-size: var(--t-md); margin-top: var(--s-5); max-width: 40ch; text-shadow: 0 1px 18px rgba(0,0,0,.45); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: var(--s-4); margin-top: var(--s-6); }
 .hero__scroll { position: absolute; right: var(--gutter); bottom: var(--s-6); z-index: 2; writing-mode: vertical-rl; font-family: var(--font-display); font-size: var(--t-xs); letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.65); display: flex; align-items: center; gap: var(--s-3); }
 @media (max-width: 720px) { .hero__scroll { display: none; } }
@@ -595,20 +595,18 @@ p { max-width: 68ch; color: var(--text-soft); }
 .kpi { font-family: var(--font-mono); font-size: var(--t-xs); letter-spacing: .03em; color: var(--text-soft); background: var(--tech-soft); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: .4rem .85rem; }
 .kpi b { color: var(--tech); font-weight: 500; }
 
-/* ---------- 22. Hero split (home): panel claro a la izquierda, foto a la derecha ---------- */
-.hero .btn--light { background: var(--brand-navy); color: #fff; }
-.hero .btn--light:hover { background: #0A3A66; box-shadow: 0 14px 30px -12px rgba(11,42,74,.5); }
-.hero .btn--on-dark { border-color: rgba(11,42,74,.3); color: var(--brand-navy); }
-.hero .btn--on-dark:hover { border-color: var(--brand-navy); background: rgba(11,42,74,.06); }
-/* Logo del header en la home: a color (navy) sobre el panel claro; al hacer scroll
-   (header glass oscuro) cambia al símbolo claro. */
-body.home .site-header:not(.is-solid) .brand__color { display: block; }
-body.home .site-header:not(.is-solid) .brand__white { display: none; }
-body.home .site-header.is-solid .brand__color { display: none; }
-body.home .site-header.is-solid .brand__white { display: block; }
-/* Nav a la derecha queda sobre la foto → texto blanco con leve sombra para contraste */
-body.home .site-header:not(.is-solid) .nav a { text-shadow: 0 1px 12px rgba(0,0,0,.5); }
-@media (max-width: 600px) {
-  /* En móvil el velo claro cubre casi todo: foto como banda inferior tenue */
-  .hero__media img { object-position: center bottom; opacity: .9; }
+/* ---------- 22. Home: header claro fijo (el logo navy destaca) + hero con foto completa ---------- */
+body.home .site-header {
+  background: rgba(255,255,255,.9);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+  border-bottom: 1px solid rgba(11,42,74,.10);
+  box-shadow: var(--shadow-sm);
+}
+body.home .brand__color { display: block; }   /* logo a color (navy) siempre en la home */
+body.home .brand__white { display: none; }
+body.home .theme-toggle { color: var(--brand-navy); border-color: rgba(11,42,74,.22); }
+body.home .nav-toggle span { background: var(--brand-navy); }
+@media (min-width: 901px) {
+  body.home .nav a:not(.btn) { color: var(--brand-navy); }   /* menú oscuro sobre el header claro */
 }
