@@ -248,7 +248,7 @@ p { max-width: 68ch; color: var(--text-soft); }
 }
 
 .brand { display: inline-flex; align-items: center; }
-.brand img { height: 40px; width: auto; }
+.brand img { height: 44px; width: auto; }
 /* Swap de logo: blanco sobre hero/oscuro; a color solo en header sólido + tema claro.
    Nota: el display se controla SOLO en las clases (no en `.brand img`) para evitar
    que la mayor especificidad de `.brand img` muestre ambas versiones a la vez. */
@@ -311,18 +311,25 @@ p { max-width: 68ch; color: var(--text-soft); }
 
 /* ---------- 9. Hero ---------- */
 .hero {
-  position: relative; min-height: 94vh; display: flex; align-items: flex-end;
-  color: #fff; overflow: hidden;
-  background: linear-gradient(180deg, var(--hero-ov-1) 0%, var(--hero-ov-2) 100%), #060B13;
+  position: relative; min-height: 90vh; display: flex; align-items: flex-end;
+  color: #fff; overflow: hidden; background: #060B13;
   background-size: cover; background-position: center;
 }
 .hero__media { position: absolute; inset: 0; z-index: 0; }
-.hero__media img { width: 100%; height: 100%; object-fit: cover; opacity: .5; }
-.hero__topo { position: absolute; inset: 0; z-index: 1; opacity: .5; mix-blend-mode: screen; pointer-events: none; }
-.hero .container { position: relative; z-index: 2; padding-bottom: clamp(3rem, 8vh, 6rem); padding-top: 9rem; }
-.hero__inner { max-width: 22ch; }
-.hero h1 { color: #fff; max-width: 16ch; }
-.hero p { color: #C7D2E2; font-size: var(--t-md); margin-top: var(--s-5); max-width: 46ch; }
+.hero__media img { width: 100%; height: 100%; object-fit: cover; opacity: .62; }
+/* Scrim direccional: oscurece arriba (nav) e izquierda (texto), deja respirar la foto a la derecha.
+   Dos degradados superpuestos = legibilidad sin "apagar" la imagen. */
+.hero::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(6,11,19,.62) 0%, rgba(6,11,19,0) 20%),
+    linear-gradient(102deg, rgba(6,11,19,.92) 0%, rgba(6,11,19,.62) 32%, rgba(6,11,19,.12) 58%, rgba(6,11,19,.5) 100%);
+}
+.hero__topo { position: absolute; inset: 0; z-index: 2; opacity: .35; mix-blend-mode: screen; pointer-events: none; }
+.hero .container { position: relative; z-index: 3; padding-bottom: clamp(3.5rem, 9vh, 6.5rem); padding-top: 8.5rem; }
+.hero__inner { max-width: 37rem; }
+.hero h1 { color: #fff; font-size: clamp(2.3rem, 5vw, 3.15rem); line-height: 1.06; letter-spacing: -.03em; text-shadow: 0 2px 40px rgba(0,0,0,.45); }
+.hero p { color: #D4DEEC; font-size: var(--t-md); margin-top: var(--s-5); max-width: 40ch; text-shadow: 0 1px 24px rgba(0,0,0,.4); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: var(--s-4); margin-top: var(--s-6); }
 .hero__scroll { position: absolute; right: var(--gutter); bottom: var(--s-6); z-index: 2; writing-mode: vertical-rl; font-family: var(--font-display); font-size: var(--t-xs); letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.65); display: flex; align-items: center; gap: var(--s-3); }
 @media (max-width: 720px) { .hero__scroll { display: none; } }
