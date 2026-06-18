@@ -237,7 +237,7 @@ p { max-width: 68ch; color: var(--text-soft); }
 
 /* ---------- 8. Header / Nav (glassmorphism) ---------- */
 .site-header { position: fixed; inset: 0 0 auto 0; z-index: 100; transition: background .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease); border-bottom: 1px solid transparent; }
-.site-header__inner { display: flex; align-items: center; gap: var(--s-5); padding-block: 1.15rem; }
+.site-header__inner { display: flex; align-items: center; gap: var(--s-5); padding-block: 1.5rem; }
 /* El logo empuja el resto a la derecha; el orden coloca nav · toggle · hamburguesa */
 .site-header__inner > .brand { margin-right: auto; order: 0; }
 .site-header__inner > .nav { order: 1; }
@@ -253,7 +253,7 @@ p { max-width: 68ch; color: var(--text-soft); }
 }
 
 .brand { display: inline-flex; align-items: center; }
-.brand img { height: 44px; width: auto; }
+.brand img { height: 80px; width: auto; }
 /* Swap de logo: blanco sobre hero/oscuro; a color solo en header sólido + tema claro.
    Nota: el display se controla SOLO en las clases (no en `.brand img`) para evitar
    que la mayor especificidad de `.brand img` muestre ambas versiones a la vez. */
@@ -264,10 +264,10 @@ p { max-width: 68ch; color: var(--text-soft); }
 
 .nav { display: flex; align-items: center; gap: var(--s-5); }
 .nav a {
-  font-family: var(--font-display); font-weight: 500; font-size: 1.0625rem;
+  font-family: var(--font-display); font-weight: 500; font-size: 1.25rem;
   color: #fff; letter-spacing: .01em; padding-block: var(--s-2); position: relative;
 }
-.nav-cta { font-size: 1rem; padding: .8rem 1.5rem; }
+.nav-cta { font-size: 1.1rem; padding: .95rem 1.8rem; }
 .is-solid .nav a, .header-light .nav a { color: var(--text); }
 .nav a::after { content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 0; background: var(--brand-orange); transition: width .3s var(--ease-spring); border-radius: 2px; }
 .nav a:hover::after, .nav a[aria-current="page"]::after { width: 100%; }
@@ -275,14 +275,14 @@ p { max-width: 68ch; color: var(--text-soft); }
 
 /* Toggle de tema */
 .theme-toggle {
-  width: 42px; height: 42px; border-radius: 50%; flex: none;
+  width: 54px; height: 54px; border-radius: 50%; flex: none;
   border: 1px solid rgba(255,255,255,.3); background: transparent; color: #fff;
   display: grid; place-items: center; cursor: pointer;
   transition: transform .3s var(--ease-spring), border-color .25s var(--ease), background .25s var(--ease), color .25s var(--ease);
 }
 .is-solid .theme-toggle, .header-light .theme-toggle { color: var(--text); border-color: var(--border-strong); }
 .theme-toggle:hover { transform: rotate(15deg); border-color: var(--accent); color: var(--accent); }
-.theme-toggle svg { width: 19px; height: 19px; }
+.theme-toggle svg { width: 24px; height: 24px; }
 .theme-toggle .icon-sun { display: none; }
 .theme-toggle .icon-moon { display: block; }
 [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
@@ -332,7 +332,7 @@ p { max-width: 68ch; color: var(--text-soft); }
     linear-gradient(102deg, rgba(6,11,19,.92) 0%, rgba(6,11,19,.62) 32%, rgba(6,11,19,.12) 58%, rgba(6,11,19,.5) 100%);
 }
 .hero__topo { position: absolute; inset: 0; z-index: 2; opacity: .35; mix-blend-mode: screen; pointer-events: none; }
-.hero .container { position: relative; z-index: 3; padding-bottom: clamp(3.5rem, 9vh, 6.5rem); padding-top: 8.5rem; }
+.hero .container { position: relative; z-index: 3; padding-bottom: clamp(3.5rem, 9vh, 6.5rem); padding-top: 10.5rem; }
 .hero__inner { max-width: 37rem; }
 .hero h1 { color: #fff; font-size: clamp(2.3rem, 5vw, 3.15rem); line-height: 1.06; letter-spacing: -.03em; text-shadow: 0 2px 40px rgba(0,0,0,.45); }
 .hero p { color: #D4DEEC; font-size: var(--t-md); margin-top: var(--s-5); max-width: 40ch; text-shadow: 0 1px 24px rgba(0,0,0,.4); }
@@ -469,7 +469,7 @@ p { max-width: 68ch; color: var(--text-soft); }
 .footer-social svg { width: 16px; }
 
 /* ---------- 16. Página de CASO ---------- */
-.case-hero { position: relative; color: #fff; padding-top: 9.5rem; padding-bottom: var(--s-10); background: linear-gradient(180deg, var(--hero-ov-1), var(--hero-ov-2)), #060B13; background-size: cover; background-position: center; overflow: hidden; }
+.case-hero { position: relative; color: #fff; padding-top: 11rem; padding-bottom: var(--s-10); background: linear-gradient(180deg, var(--hero-ov-1), var(--hero-ov-2)), #060B13; background-size: cover; background-position: center; overflow: hidden; }
 .case-hero__media { position: absolute; inset: 0; z-index: 0; }
 .case-hero__media img { width: 100%; height: 100%; object-fit: cover; opacity: .45; }
 .case-hero .container { position: relative; z-index: 2; }
@@ -519,7 +519,7 @@ p { max-width: 68ch; color: var(--text-soft); }
 .next-case { display: flex; align-items: center; justify-content: space-between; gap: var(--s-5); flex-wrap: wrap; }
 
 /* ---------- 17. Banner de prototipo ---------- */
-.proto-banner { background: var(--accent-soft); color: var(--accent); text-align: center; font-size: 0.95rem; padding: 0.7rem var(--gutter); letter-spacing: .01em; border-bottom: 1px solid var(--border); }
+.proto-banner { background: var(--accent-soft); color: var(--accent); text-align: center; font-size: 1.1rem; padding: 0.9rem var(--gutter); letter-spacing: .01em; border-bottom: 1px solid var(--border); }
 .proto-banner strong { font-weight: 600; }
 
 /* ---------- 18. Reveal on scroll ---------- */
