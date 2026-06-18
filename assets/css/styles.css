@@ -458,7 +458,7 @@ p { max-width: 68ch; color: var(--text-soft); }
 .site-footer h4 { color: #fff; font-size: var(--t-sm); letter-spacing: .1em; text-transform: uppercase; margin-bottom: var(--s-4); }
 .site-footer a { color: var(--text-soft); transition: color .2s var(--ease); }
 .site-footer a:hover { color: #fff; }
-.footer-brand img { height: 46px; width: auto; margin-bottom: var(--s-5); display: block; }
+.footer-brand img { height: 58px; width: auto; margin-bottom: var(--s-5); display: block; }
 .footer-links li + li { margin-top: var(--s-3); }
 .footer-contact li { margin-top: var(--s-3); display: flex; gap: var(--s-3); }
 .footer-contact svg { width: 18px; color: var(--accent); flex-shrink: 0; margin-top: 3px; }
