@@ -317,7 +317,7 @@ p { max-width: 68ch; color: var(--text-soft); }
 
 /* ---------- 9. Hero ---------- */
 .hero {
-  position: relative; min-height: 52vh; display: flex; align-items: flex-end;
+  position: relative; min-height: 82vh; display: flex; align-items: flex-end;
   color: #fff; overflow: hidden; background: #060B13;
   background-size: cover; background-position: center;
 }
@@ -332,8 +332,9 @@ p { max-width: 68ch; color: var(--text-soft); }
     linear-gradient(102deg, rgba(6,11,19,.92) 0%, rgba(6,11,19,.62) 32%, rgba(6,11,19,.12) 58%, rgba(6,11,19,.5) 100%);
 }
 .hero__topo { position: absolute; inset: 0; z-index: 2; opacity: .35; mix-blend-mode: screen; pointer-events: none; }
-.hero .container { position: relative; z-index: 3; padding-bottom: 2.5rem; padding-top: 8.5rem; }
-.hero__inner { max-width: 37rem; }
+.hero .container { position: relative; z-index: 3; padding-bottom: clamp(3rem, 6vh, 5rem); padding-top: 8.5rem; }
+.hero__inner { max-width: 40rem; }
+.hero__logo { height: clamp(54px, 7vw, 78px); width: auto; margin-bottom: var(--s-5); filter: drop-shadow(0 6px 24px rgba(0,0,0,.45)); }
 .hero h1 { color: #fff; font-size: clamp(2.3rem, 5vw, 3.15rem); line-height: 1.06; letter-spacing: -.03em; text-shadow: 0 2px 40px rgba(0,0,0,.45); }
 .hero p { color: #D4DEEC; font-size: var(--t-md); margin-top: var(--s-5); max-width: 40ch; text-shadow: 0 1px 24px rgba(0,0,0,.4); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: var(--s-4); margin-top: var(--s-6); }
