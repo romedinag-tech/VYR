@@ -248,8 +248,10 @@ p { max-width: 68ch; color: var(--text-soft); }
 }
 
 .brand { display: inline-flex; align-items: center; }
-.brand img { height: 40px; width: auto; display: block; }
-/* Swap de logo: blanco sobre hero/oscuro; a color solo en header sólido + tema claro */
+.brand img { height: 40px; width: auto; }
+/* Swap de logo: blanco sobre hero/oscuro; a color solo en header sólido + tema claro.
+   Nota: el display se controla SOLO en las clases (no en `.brand img`) para evitar
+   que la mayor especificidad de `.brand img` muestre ambas versiones a la vez. */
 .brand__color { display: none; }
 .brand__white { display: block; }
 [data-theme="light"] .is-solid .brand__color, [data-theme="light"] .header-light .brand__color { display: block; }
