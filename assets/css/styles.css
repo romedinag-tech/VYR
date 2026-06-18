@@ -237,7 +237,7 @@ p { max-width: 68ch; color: var(--text-soft); }
 
 /* ---------- 8. Header / Nav (glassmorphism) ---------- */
 .site-header { position: fixed; inset: 0 0 auto 0; z-index: 100; transition: background .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease); border-bottom: 1px solid transparent; }
-.site-header__inner { display: flex; align-items: center; gap: var(--s-5); padding-block: var(--s-4); }
+.site-header__inner { display: flex; align-items: center; gap: var(--s-5); padding-block: 1.15rem; }
 /* El logo empuja el resto a la derecha; el orden coloca nav · toggle · hamburguesa */
 .site-header__inner > .brand { margin-right: auto; order: 0; }
 .site-header__inner > .nav { order: 1; }
@@ -264,9 +264,10 @@ p { max-width: 68ch; color: var(--text-soft); }
 
 .nav { display: flex; align-items: center; gap: var(--s-5); }
 .nav a {
-  font-family: var(--font-display); font-weight: 500; font-size: 0.95rem;
+  font-family: var(--font-display); font-weight: 500; font-size: 1.0625rem;
   color: #fff; letter-spacing: .01em; padding-block: var(--s-2); position: relative;
 }
+.nav-cta { font-size: 1rem; padding: .8rem 1.5rem; }
 .is-solid .nav a, .header-light .nav a { color: var(--text); }
 .nav a::after { content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 0; background: var(--brand-orange); transition: width .3s var(--ease-spring); border-radius: 2px; }
 .nav a:hover::after, .nav a[aria-current="page"]::after { width: 100%; }
@@ -518,7 +519,7 @@ p { max-width: 68ch; color: var(--text-soft); }
 .next-case { display: flex; align-items: center; justify-content: space-between; gap: var(--s-5); flex-wrap: wrap; }
 
 /* ---------- 17. Banner de prototipo ---------- */
-.proto-banner { background: var(--accent-soft); color: var(--accent); text-align: center; font-size: 0.85rem; padding: 0.6rem var(--gutter); letter-spacing: .01em; border-bottom: 1px solid var(--border); }
+.proto-banner { background: var(--accent-soft); color: var(--accent); text-align: center; font-size: 0.95rem; padding: 0.7rem var(--gutter); letter-spacing: .01em; border-bottom: 1px solid var(--border); }
 .proto-banner strong { font-weight: 600; }
 
 /* ---------- 18. Reveal on scroll ---------- */
