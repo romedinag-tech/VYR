@@ -321,26 +321,26 @@ body.home .site-header:not(.is-solid) .brand { opacity: 0; visibility: hidden; }
 /* ---------- 9. Hero ---------- */
 .hero {
   position: relative; min-height: 78vh; display: flex; align-items: flex-end;
-  color: #fff; overflow: hidden;
-  /* Fondo de marca (sin fotografía): glow técnico + gradiente navy→tinta */
+  color: var(--brand-navy); overflow: hidden;
+  /* Fondo CLARO para que el logo (azul oscuro) destaque */
   background:
-    radial-gradient(110% 80% at 80% -10%, rgba(70,198,245,.14) 0%, transparent 55%),
-    radial-gradient(90% 70% at -5% 110%, rgba(232,119,46,.07) 0%, transparent 50%),
-    linear-gradient(165deg, #0E2942 0%, #081526 55%, #060B13 100%);
+    radial-gradient(100% 80% at 85% -10%, rgba(30,95,168,.10) 0%, transparent 55%),
+    radial-gradient(80% 70% at -5% 110%, rgba(232,119,46,.06) 0%, transparent 50%),
+    linear-gradient(168deg, #FFFFFF 0%, #ECF1F7 55%, #E3EAF3 100%);
 }
 .hero__media { display: none; }
 /* Scrim direccional: oscurece arriba (nav) e izquierda (texto), deja respirar la foto a la derecha.
    Dos degradados superpuestos = legibilidad sin "apagar" la imagen. */
 .hero::after {
   content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: linear-gradient(180deg, transparent 55%, rgba(4,8,14,.55) 100%);
+  background: linear-gradient(180deg, transparent 80%, rgba(11,42,74,.05) 100%);
 }
-.hero__topo { position: absolute; inset: 0; z-index: 2; opacity: .5; mix-blend-mode: screen; pointer-events: none; }
+.hero__topo { position: absolute; inset: 0; z-index: 2; opacity: .45; mix-blend-mode: multiply; pointer-events: none; }
 .hero .container { position: relative; z-index: 3; padding-bottom: clamp(3rem, 6vh, 5rem); padding-top: 8.5rem; }
 .hero__inner { max-width: 40rem; }
-.hero__logo { height: clamp(54px, 7vw, 78px); width: auto; margin-bottom: var(--s-5); filter: drop-shadow(0 6px 24px rgba(0,0,0,.45)); }
-.hero h1 { color: #fff; font-size: clamp(2.3rem, 5vw, 3.15rem); line-height: 1.06; letter-spacing: -.03em; text-shadow: 0 2px 40px rgba(0,0,0,.45); }
-.hero p { color: #D4DEEC; font-size: var(--t-md); margin-top: var(--s-5); max-width: 40ch; text-shadow: 0 1px 24px rgba(0,0,0,.4); }
+.hero__logo { height: clamp(58px, 7.5vw, 86px); width: auto; margin-bottom: var(--s-5); filter: drop-shadow(0 8px 22px rgba(11,42,74,.16)); }
+.hero h1 { color: var(--brand-navy); font-size: clamp(2.3rem, 5vw, 3.15rem); line-height: 1.06; letter-spacing: -.03em; }
+.hero p { color: #46566B; font-size: var(--t-md); margin-top: var(--s-5); max-width: 40ch; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: var(--s-4); margin-top: var(--s-6); }
 .hero__scroll { position: absolute; right: var(--gutter); bottom: var(--s-6); z-index: 2; writing-mode: vertical-rl; font-family: var(--font-display); font-size: var(--t-xs); letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.65); display: flex; align-items: center; gap: var(--s-3); }
 @media (max-width: 720px) { .hero__scroll { display: none; } }
@@ -600,3 +600,16 @@ body.home .site-header:not(.is-solid) .brand { opacity: 0; visibility: hidden; }
 .kpis { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-5); }
 .kpi { font-family: var(--font-mono); font-size: var(--t-xs); letter-spacing: .03em; color: var(--text-soft); background: var(--tech-soft); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: .4rem .85rem; }
 .kpi b { color: var(--tech); font-weight: 500; }
+
+/* ---------- 22. Hero claro (home): botones y controles del header sobre fondo claro ---------- */
+.hero .btn--light { background: var(--brand-navy); color: #fff; }
+.hero .btn--light:hover { background: #0A3A66; box-shadow: 0 14px 30px -12px rgba(11,42,74,.5); }
+.hero .btn--on-dark { border-color: rgba(11,42,74,.28); color: var(--brand-navy); }
+.hero .btn--on-dark:hover { border-color: var(--brand-navy); background: rgba(11,42,74,.06); }
+.hero__scroll { color: rgba(11,42,74,.5); }
+/* Header transparente sobre el hero claro de la home → controles oscuros */
+body.home .site-header:not(.is-solid) .theme-toggle { color: var(--brand-navy); border-color: rgba(11,42,74,.25); }
+body.home .site-header:not(.is-solid) .nav-toggle span { background: var(--brand-navy); }
+@media (min-width: 901px) {
+  body.home .site-header:not(.is-solid) .nav a { color: var(--brand-navy); }
+}
