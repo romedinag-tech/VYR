@@ -1,0 +1,33 @@
+n,proyecto,archivo,categoria,fuente,estado
+01,Teleférico Cerros de Talcahuano,01-teleferico-talcahuano.jpg,Costanera / borde costero,unsplash:photo-1505228395891-9a51e7e86bf6,ok
+02,Ciclovías San Fernando,02-ciclovias-san-fernando.jpg,Ciclovías,unsplash:photo-1571188654248-7a89213915f7,ok
+03,Ciclovías Calama,03-ciclovias-calama.jpg,Ciclovías,unsplash:photo-1507035895480-2b3156c31fc8,ok
+04,Ciclovías Quilpué y Villa Alemana,04-ciclovias-quilpue-villa-alemana.jpg,Ciclovías,unsplash:photo-1571188654248-7a89213915f7,ok
+05,Ciclovías Arica,05-ciclovias-arica.jpg,Ciclovías,unsplash:photo-1507035895480-2b3156c31fc8,ok
+06,Interconexión Alto Centro Copiapó,06-interconexion-alto-centro-copiapo.jpg,Vialidad / interurbano,unsplash:photo-1465447142348-e9952c393450,ok
+07,"Accesibilidad Sector Sur, Arica",07-accesibilidad-sur-arica.jpg,Eje urbano / accesibilidad,unsplash:photo-1449824913935-59a10b8d2000,ok
+08,"Gómez Carreño – Jardín del Mar, Reñaca",08-gomez-carreno-renaca.jpg,Eje urbano / accesibilidad,unsplash:photo-1449824913935-59a10b8d2000,ok
+09,Acceso Norte / Av. O'Higgins San Fernando,09-acceso-norte-san-fernando.jpg,Eje vial / ruta,unsplash:photo-1473445730015-841f29a9490b,ok
+10,PTU Valdivia Etapa III,10-ptu-valdivia.jpg,Transporte público,unsplash:photo-1570125909232-eb263c188f7e,ok
+11,Circunvalación Centro Ancud,11-circunvalacion-ancud.jpg,Eje vial / ruta,unsplash:photo-1473445730015-841f29a9490b,ok
+12,Conectividad Oriente-Poniente Coquimbo,12-conectividad-coquimbo.jpg,Vialidad / interurbano,unsplash:photo-1465447142348-e9952c393450,ok
+13,"Puente Artificio, La Calera",13-puente-artificio-la-calera.jpg,Vialidad / interurbano,unsplash:photo-1465447142348-e9952c393450,ok
+14,"La Tirana y Cerro Dragón, Iquique",14-la-tirana-cerro-dragon-iquique.jpg,Urbano,unsplash:photo-1480714378408-67cf0d13bc1b,ok
+15,"Costanera Chinchorro, Arica",15-costanera-chinchorro-arica.jpg,Costanera / borde costero,unsplash:photo-1505228395891-9a51e7e86bf6,ok
+16,PTU Talca y Maule Etapa I,16-ptu-talca-maule.jpg,Transporte público,unsplash:photo-1544620347-c4fd4a3d5957,ok
+17,"Edmundo Eluchans, Viña–Concón",17-edmundo-eluchans-vina-concon.jpg,Eje urbano / accesibilidad,unsplash:photo-1449824913935-59a10b8d2000,ok
+18,Accesibilidad Concepción–Penco,18-accesibilidad-concepcion-penco.jpg,Eje urbano / accesibilidad,unsplash:photo-1449824913935-59a10b8d2000,ok
+19,Plan de Transporte Linares Etapa I,19-plan-transporte-linares.jpg,Urbano,unsplash:photo-1486325212027-8081e485255e,ok
+20,Linderos–Azolas y Centro de Arica,20-azolas-centro-arica.jpg,Gestión de tránsito,unsplash:photo-1494522358652-f30e61a60313,ok
+21,"Ampliación Av. La Compañía, Rancagua",21-av-la-compania-rancagua.jpg,Eje vial / ruta,unsplash:photo-1473445730015-841f29a9490b,ok
+22,Gestión de Tránsito Copiapó,22-gestion-transito-copiapo.jpg,Gestión de tránsito,unsplash:photo-1494522358652-f30e61a60313,ok
+23,Terminal Rodoviario Punta Arenas,23-terminal-rodoviario-punta-arenas.jpg,Transporte público,unsplash:photo-1570125909232-eb263c188f7e,ok
+24,SCAT Ciudad de Linares,24-scat-linares.jpg,Gestión de tránsito,unsplash:photo-1494522358652-f30e61a60313,ok
+25,"Eje Bueras / Av. Francia, Valdivia",25-eje-bueras-av-francia-valdivia.jpg,Eje urbano / accesibilidad,unsplash:photo-1449824913935-59a10b8d2000,ok
+26,Gestión de Tránsito Arica,26-gestion-transito-arica.jpg,Gestión de tránsito,unsplash:photo-1494522358652-f30e61a60313,ok
+27,"Ruta 160, San Pedro de la Paz",27-ruta-160-san-pedro-de-la-paz.jpg,Vialidad / interurbano,unsplash:photo-1465447142348-e9952c393450,ok
+28,Estudio Ferroviario Coronel–Lota (FESUR),28-ferroviario-coronel-lota-fesur.jpg,Ferroviario,unsplash:photo-1474487548417-781cb71495f3,ok
+29,"Costanera Andalién Oriente, Penco",29-costanera-andalien-penco.jpg,Costanera / borde costero,unsplash:photo-1505228395891-9a51e7e86bf6,ok
+30,Interconexión Santiago–Valparaíso (TYPSA),30-interconexion-santiago-valparaiso.jpg,Vialidad / interurbano,unsplash:photo-1465447142348-e9952c393450,ok
+31,Concesión Ruta 68 Pajaritos–Placilla (TYPSA),31-concesion-ruta-68.jpg,Vialidad / interurbano,unsplash:photo-1465447142348-e9952c393450,ok
+32,Demanda Ruta 5 Chonchi–Quellón (TYPSA),32-demanda-ruta-5-chonchi-quellon.jpg,Eje vial / ruta,unsplash:photo-1473445730015-841f29a9490b,ok
