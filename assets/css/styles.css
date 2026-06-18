@@ -264,7 +264,7 @@ p { max-width: 68ch; color: var(--text-soft); }
 
 .nav { display: flex; align-items: center; gap: var(--s-5); }
 .nav a {
-  font-family: var(--font-display); font-weight: 500; font-size: var(--t-sm);
+  font-family: var(--font-display); font-weight: 500; font-size: 0.95rem;
   color: #fff; letter-spacing: .01em; padding-block: var(--s-2); position: relative;
 }
 .is-solid .nav a, .header-light .nav a { color: var(--text); }
@@ -518,7 +518,7 @@ p { max-width: 68ch; color: var(--text-soft); }
 .next-case { display: flex; align-items: center; justify-content: space-between; gap: var(--s-5); flex-wrap: wrap; }
 
 /* ---------- 17. Banner de prototipo ---------- */
-.proto-banner { background: var(--accent-soft); color: var(--accent); text-align: center; font-size: var(--t-xs); padding: var(--s-2) var(--gutter); letter-spacing: .02em; border-bottom: 1px solid var(--border); }
+.proto-banner { background: var(--accent-soft); color: var(--accent); text-align: center; font-size: 0.85rem; padding: 0.6rem var(--gutter); letter-spacing: .01em; border-bottom: 1px solid var(--border); }
 .proto-banner strong { font-weight: 600; }
 
 /* ---------- 18. Reveal on scroll ---------- */
