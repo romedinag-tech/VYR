@@ -317,7 +317,7 @@ p { max-width: 68ch; color: var(--text-soft); }
 
 /* ---------- 9. Hero ---------- */
 .hero {
-  position: relative; min-height: 90vh; display: flex; align-items: flex-end;
+  position: relative; min-height: 56vh; display: flex; align-items: flex-end;
   color: #fff; overflow: hidden; background: #060B13;
   background-size: cover; background-position: center;
 }
@@ -332,7 +332,7 @@ p { max-width: 68ch; color: var(--text-soft); }
     linear-gradient(102deg, rgba(6,11,19,.92) 0%, rgba(6,11,19,.62) 32%, rgba(6,11,19,.12) 58%, rgba(6,11,19,.5) 100%);
 }
 .hero__topo { position: absolute; inset: 0; z-index: 2; opacity: .35; mix-blend-mode: screen; pointer-events: none; }
-.hero .container { position: relative; z-index: 3; padding-bottom: clamp(3.5rem, 9vh, 6.5rem); padding-top: 10.5rem; }
+.hero .container { position: relative; z-index: 3; padding-bottom: 2.5rem; padding-top: 8.5rem; }
 .hero__inner { max-width: 37rem; }
 .hero h1 { color: #fff; font-size: clamp(2.3rem, 5vw, 3.15rem); line-height: 1.06; letter-spacing: -.03em; text-shadow: 0 2px 40px rgba(0,0,0,.45); }
 .hero p { color: #D4DEEC; font-size: var(--t-md); margin-top: var(--s-5); max-width: 40ch; text-shadow: 0 1px 24px rgba(0,0,0,.4); }
@@ -400,7 +400,9 @@ p { max-width: 68ch; color: var(--text-soft); }
 /* ---------- 12b. Carrusel de tipologías ----------
    Track con scroll-snap nativo (táctil + teclado + accesible), flechas que
    desplazan por el ancho de tarjeta y bleed a la derecha para invitar a deslizar. */
-.carousel-head { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--s-5); margin-bottom: var(--s-6); flex-wrap: wrap; }
+/* La sección de tipologías ocupa la mitad inferior de la primera vista: padding superior reducido */
+#tipologias { padding-block: var(--s-6) var(--s-10); }
+.carousel-head { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--s-5); margin-bottom: var(--s-5); flex-wrap: wrap; }
 .carousel-head .section-head { margin-bottom: 0; }
 .carousel-nav { display: flex; gap: var(--s-3); }
 .carousel-btn {
@@ -422,7 +424,7 @@ p { max-width: 68ch; color: var(--text-soft); }
 .tcard { flex: 0 0 auto; width: clamp(260px, 80vw, 360px); scroll-snap-align: start; }
 .tcard a {
   position: relative; display: flex; flex-direction: column; justify-content: flex-end;
-  height: 440px; border-radius: var(--radius-lg); overflow: hidden; color: #fff; padding: var(--s-6);
+  height: 360px; border-radius: var(--radius-lg); overflow: hidden; color: #fff; padding: var(--s-6);
   border: 1px solid var(--border); isolation: isolate;
   transition: transform .4s var(--ease-spring), box-shadow .4s var(--ease);
 }
