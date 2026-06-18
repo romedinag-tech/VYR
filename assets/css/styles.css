@@ -391,6 +391,46 @@ p { max-width: 68ch; color: var(--text-soft); }
 .project-card.is-hidden { display: none; }
 .filter-empty { color: var(--text-soft); padding: var(--s-6) 0; }
 
+/* ---------- 12b. Carrusel de tipologías ----------
+   Track con scroll-snap nativo (táctil + teclado + accesible), flechas que
+   desplazan por el ancho de tarjeta y bleed a la derecha para invitar a deslizar. */
+.carousel-head { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--s-5); margin-bottom: var(--s-6); flex-wrap: wrap; }
+.carousel-head .section-head { margin-bottom: 0; }
+.carousel-nav { display: flex; gap: var(--s-3); }
+.carousel-btn {
+  width: 48px; height: 48px; border-radius: 50%; flex: none;
+  border: 1px solid var(--border-strong); background: var(--bg-elev); color: var(--text);
+  display: grid; place-items: center; cursor: pointer;
+  transition: transform .25s var(--ease-spring), border-color .25s var(--ease), color .25s var(--ease), opacity .25s var(--ease);
+}
+.carousel-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+.carousel-btn:disabled { opacity: .3; cursor: default; transform: none; }
+.carousel-btn svg { width: 20px; height: 20px; }
+
+.carousel__track {
+  display: flex; gap: var(--s-5); overflow-x: auto; scroll-snap-type: x mandatory;
+  padding-inline: var(--gutter); padding-bottom: var(--s-4); margin: 0;
+  scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none;
+}
+.carousel__track::-webkit-scrollbar { display: none; }   /* oculta scrollbar, navegación por flechas/gesto */
+.tcard { flex: 0 0 auto; width: clamp(260px, 80vw, 360px); scroll-snap-align: start; }
+.tcard a {
+  position: relative; display: flex; flex-direction: column; justify-content: flex-end;
+  height: 440px; border-radius: var(--radius-lg); overflow: hidden; color: #fff; padding: var(--s-6);
+  border: 1px solid var(--border); isolation: isolate;
+  transition: transform .4s var(--ease-spring), box-shadow .4s var(--ease);
+}
+.tcard a:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); text-decoration: none; }
+.tcard img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease-spring); }
+.tcard a:hover img { transform: scale(1.06); }
+.tcard a::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(8,18,34,.05) 0%, rgba(8,18,34,.5) 52%, rgba(6,12,22,.93) 100%); }
+.tcard__kicker { align-self: flex-start; font-family: var(--font-display); font-size: var(--t-xs); font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: #fff; padding: .35rem .8rem; border: 1px solid rgba(255,255,255,.4); border-radius: var(--radius-pill); margin-bottom: auto; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.tcard h3 { color: #fff; font-size: var(--t-lg); margin-top: var(--s-5); }
+.tcard p { color: #C7D2E2; font-size: var(--t-sm); margin-top: var(--s-2); }
+.tcard__more { margin-top: var(--s-4); font-family: var(--font-display); font-size: var(--t-sm); color: #fff; display: inline-flex; gap: 7px; align-items: center; }
+.tcard__more .arrow { transition: transform .25s var(--ease-spring); }
+.tcard a:hover .tcard__more .arrow { transform: translateX(4px); }
+
 /* ---------- 13. Mandantes ---------- */
 .clients { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: clamp(1.5rem,5vw,4rem); }
 .client-logo { font-family: var(--font-display); font-weight: 600; font-size: var(--t-md); color: var(--text-dim); letter-spacing: .02em; transition: color .25s var(--ease); }

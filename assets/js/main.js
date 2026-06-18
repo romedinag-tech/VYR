@@ -100,6 +100,37 @@
     });
   }
 
+  /* ---- Carrusel de tipologías ---- */
+  var tip = document.getElementById("tipologias");
+  if (tip) {
+    var track = tip.querySelector("[data-carousel-track]");
+    var bPrev = tip.querySelector("[data-carousel-prev]");
+    var bNext = tip.querySelector("[data-carousel-next]");
+    var step = function () {
+      var card = track.querySelector(".tcard");
+      return card ? card.getBoundingClientRect().width + 24 : 320; // ancho de tarjeta + gap (1.5rem)
+    };
+    var sync = function () {
+      var max = track.scrollWidth - track.clientWidth - 4;
+      bPrev.disabled = track.scrollLeft <= 4;
+      bNext.disabled = track.scrollLeft >= max;
+    };
+    bPrev.addEventListener("click", function () { track.scrollBy({ left: -step(), behavior: "smooth" }); });
+    bNext.addEventListener("click", function () { track.scrollBy({ left: step(), behavior: "smooth" }); });
+    track.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    sync();
+  }
+
+  /* ---- Filtro de proyectos desde el hash (#f=token), p.ej. al venir del carrusel ---- */
+  if (filterBar) {
+    var fh = (location.hash || "").match(/f=([a-z]+)/);
+    if (fh) {
+      var fbtn = filterBar.querySelector('[data-filter="' + fh[1] + '"]');
+      if (fbtn) fbtn.click();
+    }
+  }
+
   /* ---- Año dinámico en footer (si existe) ---- */
   var y = document.querySelector("[data-year]");
   if (y) y.textContent = new Date().getFullYear();
