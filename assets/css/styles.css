@@ -19,8 +19,9 @@
   --brand-blue-bright: #4C8DF0;
   --brand-orange: #E8772E;
 
-  --font-display: "Space Grotesk", system-ui, -apple-system, sans-serif;
-  --font-text: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Syne", system-ui, -apple-system, sans-serif;          /* títulos: moderno, geométrico */
+  --font-text: "Inter", system-ui, -apple-system, sans-serif;            /* cuerpo */
+  --font-mono: "Roboto Mono", ui-monospace, "SF Mono", Menlo, monospace; /* datos / etiquetas técnicas */
 
   /* Escala tipográfica modular 1.25 */
   --t-xs: 0.8125rem; --t-sm: 0.875rem; --t-base: 1rem; --t-md: 1.25rem;
@@ -64,6 +65,8 @@
   --accent-soft: rgba(76,141,240,.14);
   --on-accent: #061224;
   --grad-accent: linear-gradient(120deg, #5C97F4 0%, #8FB8F6 100%);
+  --tech: #46C6F5;                 /* acento técnico (cian) — datos, precisión, dataviz */
+  --tech-soft: rgba(70,198,245,.14);
 
   /* Cristal del header */
   --glass: rgba(10,16,27,.62);
@@ -100,6 +103,8 @@
   --accent-soft: rgba(30,95,168,.10);
   --on-accent: #FFFFFF;
   --grad-accent: linear-gradient(120deg, #1E5FA8 0%, #2E97D4 100%);
+  --tech: #0E8FBF;
+  --tech-soft: rgba(14,143,191,.10);
 
   --glass: rgba(255,255,255,.72);
   --glass-border: rgba(11,30,60,.08);
@@ -170,13 +175,13 @@ h4 { font-size: var(--t-md); }
 p { max-width: 68ch; color: var(--text-soft); }
 
 .eyebrow {
-  font-family: var(--font-display);
-  font-size: var(--t-sm); font-weight: 500;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--t-xs); font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--tech);
   display: inline-flex; align-items: center; gap: var(--s-3);
 }
-.eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--brand-orange); display: inline-block; border-radius: 2px; }
+.eyebrow::before { content: ""; width: 26px; height: 2px; background: var(--tech); display: inline-block; border-radius: 2px; }
 .lead { font-size: var(--t-md); color: var(--text-soft); line-height: 1.55; }
 /* Utilidad de texto con degradado de marca */
 .grad-text {
@@ -342,12 +347,12 @@ p { max-width: 68ch; color: var(--text-soft); }
 .stat:hover { background: var(--bg-elev-2); }
 .section--dark .stat { background: rgba(255,255,255,.03); }
 .stat__num {
-  font-family: var(--font-display); font-weight: 600; line-height: 1;
+  font-family: var(--font-mono); font-weight: 500; line-height: 1;
   font-size: clamp(2.4rem, 5vw, var(--t-3xl)); color: var(--text);
   display: flex; align-items: baseline; gap: 3px; font-variant-numeric: tabular-nums; /* cifras alineadas */
 }
 .section--dark .stat__num { color: #fff; }
-.stat__num .unit { font-size: .4em; color: var(--brand-orange); font-weight: 500; }
+.stat__num .unit { font-size: .42em; color: var(--tech); font-weight: 500; }
 .stat__label { margin-top: var(--s-3); font-size: var(--t-sm); color: var(--text-soft); }
 
 /* ---------- 11. Cards de servicio ---------- */
@@ -553,3 +558,37 @@ p { max-width: 68ch; color: var(--text-soft); }
   .last-update::before { animation: lu-pulse 2.4s var(--ease) infinite; }
 }
 @keyframes lu-pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+
+/* ---------- 21. Capa técnica (Roboto Mono), numeración de servicios y panel de software ---------- */
+/* Micro-tipografía técnica en mono: navegación, botones, etiquetas y datos.
+   Los títulos quedan en Syne; el cuerpo en Inter. */
+.nav a, .btn, .link-arrow, .filter-btn,
+.project-card__tag, .tcard__kicker, .case-tag, .breadcrumb,
+.spec-card h4, .spec-row dt, .spec-row dd,
+.map-block__caption, .hero__scroll, .client-logo {
+  font-family: var(--font-mono);
+}
+.btn { letter-spacing: .02em; font-weight: 500; }
+.nav a { letter-spacing: .03em; font-weight: 500; }
+.client-logo { font-weight: 500; }
+
+/* Numeración "01 · 02 …" en tarjetas de servicio (estilo ficha técnica) */
+#servicios .grid { counter-reset: svc; }
+#servicios .service { counter-increment: svc; }
+#servicios .service::after {
+  content: counter(svc, decimal-leading-zero);
+  position: absolute; top: var(--s-5); right: var(--s-6);
+  font-family: var(--font-mono); font-size: var(--t-sm); font-weight: 500;
+  color: var(--text-dim); letter-spacing: .05em;
+}
+
+/* Panel "software propietario" para el diferenciador técnico */
+.panel { box-shadow: var(--shadow-md); }
+.panel__bar { display: flex; align-items: center; gap: var(--s-4); padding: var(--s-3) var(--s-4); background: rgba(255,255,255,.04); border-bottom: 1px solid var(--border); }
+.panel__dots { display: inline-flex; gap: 6px; flex: none; }
+.panel__dots i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.18); }
+.panel__file { font-family: var(--font-mono); font-size: var(--t-xs); color: var(--text-soft); letter-spacing: .03em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.panel__status { margin-left: auto; flex: none; font-family: var(--font-mono); font-size: var(--t-xs); color: var(--tech); letter-spacing: .06em; }
+.kpis { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-5); }
+.kpi { font-family: var(--font-mono); font-size: var(--t-xs); letter-spacing: .03em; color: var(--text-soft); background: var(--tech-soft); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: .4rem .85rem; }
+.kpi b { color: var(--tech); font-weight: 500; }

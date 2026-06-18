@@ -8,7 +8,7 @@
   <meta name="description" content="Consultora chilena de ingeniería de transporte: modelación, evaluación de proyectos de inversión, concesiones e ingeniería de detalle en infraestructura de transporte y movilidad." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="assets/logo/vr-icon-512.png" />
   <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png" />
@@ -258,7 +258,7 @@
       <div class="container">
         <div class="grid grid-2" style="align-items:center;gap:3rem">
           <div class="reveal">
-            <span class="eyebrow" style="color:var(--azul-300)">Diferenciador técnico</span>
+            <span class="eyebrow" style="color:var(--tech)">Diferenciador técnico</span>
             <h2 id="enf-title">Decisiones con base geoespacial y datos reales</h2>
             <p style="margin-top:1rem;color:var(--azul-100)">Integramos mediciones de tránsito, matrices origen-destino y telefonía móvil con modelación de redes para visualizar la demanda donde realmente ocurre. La evidencia espacial reduce la incertidumbre y hace transparente cada supuesto.</p>
             <div class="hero__actions" style="margin-top:2rem">
@@ -266,7 +266,12 @@
             </div>
           </div>
           <div class="reveal" data-delay="1">
-            <div class="map-block">
+            <div class="map-block panel">
+              <div class="panel__bar">
+                <span class="panel__dots"><i></i><i></i><i></i></span>
+                <span class="panel__file">modelo_od_rm.vyr · matriz origen–destino</span>
+                <span class="panel__status">● procesando</span>
+              </div>
               <div class="map-block__canvas">
                 <svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" aria-label="Visualización esquemática de una red de transporte con flujos de demanda" xmlns="http://www.w3.org/2000/svg">
                   <rect width="640" height="360" fill="#0B2A4A"/>
@@ -288,12 +293,18 @@
                 </svg>
               </div>
               <div class="map-block__caption">
-                <span>Esquema ilustrativo · red multimodal</span>
+                <span>Visualización esquemática · red multimodal</span>
                 <div class="map-legend">
-                  <span><i style="background:#8FB4DC"></i> Red vial</span>
+                  <span><i style="background:#46C6F5"></i> Red vial</span>
                   <span><i style="background:#E8772E"></i> Flujo OD</span>
                 </div>
               </div>
+            </div>
+            <div class="kpis">
+              <span class="kpi"><b>48</b> km corredor</span>
+              <span class="kpi"><b>12</b> comunas</span>
+              <span class="kpi"><b>3</b> escenarios</span>
+              <span class="kpi"><b>OD</b> telefonía móvil</span>
             </div>
           </div>
         </div>
