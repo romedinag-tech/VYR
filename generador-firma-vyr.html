@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Generador de firma — V&R Ingeniería</title>
+<style>
+  body{margin:0;background:#eef2f7;font-family:Arial,Helvetica,sans-serif;color:#0B2A4A;}
+  .wrap{max-width:760px;margin:28px auto;padding:0 18px;}
+  h1{font-size:22px;margin:0 0 4px;}
+  .sub{color:#5B6571;font-size:14px;margin:0 0 22px;}
+  .box{background:#fff;border:1px solid #e6e9ee;border-radius:12px;padding:22px 24px;margin-bottom:18px;}
+  .steps{background:#fff;border:1px solid #e6e9ee;border-radius:12px;padding:18px 24px;margin-bottom:18px;font-size:14px;line-height:1.6;}
+  .steps b{color:#0B2A4A;}
+  label{display:block;font-size:13px;font-weight:bold;margin:12px 0 4px;}
+  input{width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid #cdd5df;border-radius:8px;font-size:15px;color:#0B2A4A;}
+  .btn{display:inline-block;margin-top:16px;background:#0B2A4A;color:#fff;border:0;border-radius:8px;padding:12px 22px;font-size:15px;font-weight:bold;cursor:pointer;}
+  .btn:hover{background:#0a3a66;}
+  .ok{color:#1d9e75;font-weight:bold;margin-left:12px;font-size:14px;display:none;}
+  .prevlabel{font-size:12px;color:#98A2AE;letter-spacing:.08em;text-transform:uppercase;margin:6px 0 10px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Generador de firma · V&amp;R Ingeniería</h1>
+  <p class="sub">Escribe tus datos, revisa la vista previa y presiona “Copiar firma”. Luego pégala en tu correo.</p>
+
+  <div class="steps">
+    <b>Cómo instalarla en el Webmail (Roundcube):</b><br />
+    1. Entra a <b>vyringenieria.cl/webmail</b> e inicia sesión.<br />
+    2. Ve a <b>Ajustes (⚙) → Identidades</b> y selecciona tu cuenta.<br />
+    3. En el campo <b>Firma</b>, activa el modo <b>HTML</b> (el botón/interruptor de firma HTML). <b>Esto es clave: primero HTML, después pegar.</b><br />
+    4. Aquí arriba, completa tus datos y presiona <b>“Copiar firma”</b>.<br />
+    5. Haz clic dentro del cuadro de firma y pega con <b>Ctrl+V</b>.<br />
+    6. Presiona <b>Guardar</b>. ¡Listo!
+  </div>
+
+  <div class="box">
+    <label for="nombre">Nombre (como quieres que aparezca)</label>
+    <input id="nombre" type="text" value="Nombre Apellido G." />
+    <label for="cargo">Cargo</label>
+    <input id="cargo" type="text" value="Cargo" />
+    <label for="fono">Teléfono</label>
+    <input id="fono" type="text" value="+56 9 XXXX XXXX" />
+    <button class="btn" id="copyBtn" type="button">Copiar firma</button>
+    <span class="ok" id="ok">✓ Copiada — ahora pégala en tu correo</span>
+  </div>
+
+  <div class="box">
+    <div class="prevlabel">Vista previa</div>
+    <table id="sig" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;color:#0B2A4A;">
+      <tr>
+        <td style="padding:0 20px 0 0;border-right:3px solid #E8772E;vertical-align:middle;">
+          <img src="https://raw.githubusercontent.com/romedinag-tech/VYR/main/assets/logo/vr-logo.png" alt="V&amp;R Ingeniería" width="120" style="display:block;width:120px;height:auto;border:0;" />
+        </td>
+        <td style="padding:0 0 0 20px;vertical-align:middle;">
+          <div id="pNombre" style="font-size:18px;font-weight:bold;color:#0B2A4A;line-height:1.2;">Nombre Apellido G.</div>
+          <div id="pCargo" style="font-size:13px;color:#5B6571;padding:2px 0 10px;">Cargo&nbsp;·&nbsp;V&amp;R Ingeniería</div>
+          <div style="font-size:13px;color:#0B2A4A;line-height:1.7;">
+            <a id="pTel" href="tel:+56900000000" style="color:#0B2A4A;text-decoration:none;">+56 9 XXXX XXXX</a><br />
+            <a href="https://www.vyringenieria.cl" style="color:#1E5FA8;text-decoration:none;">www.vyringenieria.cl</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="padding:14px 0 0;">
+          <div style="font-size:11px;color:#98A2AE;font-style:italic;">Ingeniería precisa para sistemas de transporte complejos.</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<script>
+  var $=function(id){return document.getElementById(id);};
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function render(){
+    var n=$('nombre').value||' ', c=$('cargo').value||' ', f=$('fono').value||' ';
+    $('pNombre').textContent=n;
+    $('pCargo').innerHTML=esc(c)+'&nbsp;·&nbsp;V&amp;R Ingeniería';
+    $('pTel').textContent=f;
+    $('pTel').setAttribute('href','tel:'+f.replace(/[^\d+]/g,''));
+  }
+  ['nombre','cargo','fono'].forEach(function(id){$(id).addEventListener('input',render);});
+  render();
+
+  $('copyBtn').addEventListener('click', function(){
+    var html=$('sig').outerHTML;
+    var text=$('pNombre').textContent+'\n'+$('cargo').value+' · V&R Ingeniería\n'+$('fono').value+'\nwww.vyringenieria.cl\nIngeniería precisa para sistemas de transporte complejos.';
+    function done(){ $('ok').style.display='inline'; setTimeout(function(){$('ok').style.display='none';},4000); }
+    if(navigator.clipboard && window.ClipboardItem){
+      navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([text],{type:'text/plain'})})]).then(done).catch(fallback);
+    } else { fallback(); }
+    function fallback(){
+      var r=document.createRange(); r.selectNode($('sig'));
+      var s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      try{document.execCommand('copy');}catch(e){}
+      s.removeAllRanges(); done();
+    }
+  });
+</script>
+</body>
+</html>
