@@ -144,4 +144,46 @@
   /* ---- Año dinámico en footer (si existe) ---- */
   var y = document.querySelector("[data-year]");
   if (y) y.textContent = new Date().getFullYear();
+
+  /* ---- Modal de acceso de clientes (demo; la autenticación real irá en cPanel) ---- */
+  var loginLinks = document.querySelectorAll("[data-login]");
+  if (loginLinks.length) {
+    var overlay = document.createElement("div");
+    overlay.className = "login-overlay";
+    overlay.innerHTML =
+      '<div class="login-card" role="dialog" aria-modal="true" aria-labelledby="login-title">' +
+      '<button class="login-card__close" type="button" aria-label="Cerrar">×</button>' +
+      '<img class="brand-mark brand-mark--color" src="assets/logo/logo-lockup-color.png" alt="V&amp;R Ingeniería" />' +
+      '<img class="brand-mark brand-mark--white" src="assets/logo/logo-lockup-white.png" alt="V&amp;R Ingeniería" />' +
+      '<h2 id="login-title">Acceso de clientes</h2>' +
+      '<p class="sub">Ingresa con las credenciales que te entregamos para ver los productos y documentos de tu proyecto.</p>' +
+      '<form id="login-form" novalidate>' +
+      '<p class="login-error" id="login-error">Completa tu usuario y contraseña.</p>' +
+      '<div class="login-field"><label for="login-user">Usuario</label><input id="login-user" type="text" autocomplete="username" placeholder="tu.usuario" /></div>' +
+      '<div class="login-field"><label for="login-pass">Contraseña</label><input id="login-pass" type="password" autocomplete="current-password" placeholder="••••••••" /></div>' +
+      '<button class="btn-login" type="submit">Ingresar</button>' +
+      '<p class="login-note">Acceso en implementación. La validación real se habilitará próximamente.</p>' +
+      '</form></div>';
+    document.body.appendChild(overlay);
+    function openLogin() {
+      overlay.classList.add("is-open"); document.body.classList.add("nav-open");
+      setTimeout(function () { var u = document.getElementById("login-user"); if (u) u.focus(); }, 30);
+    }
+    function closeLogin() { overlay.classList.remove("is-open"); document.body.classList.remove("nav-open"); }
+    loginLinks.forEach(function (lnk) {
+      lnk.addEventListener("click", function (e) { e.preventDefault(); closeNav(); openLogin(); });
+    });
+    overlay.querySelector(".login-card__close").addEventListener("click", closeLogin);
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) closeLogin(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && overlay.classList.contains("is-open")) closeLogin(); });
+    overlay.querySelector("#login-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var u = document.getElementById("login-user").value.trim();
+      var p = document.getElementById("login-pass").value.trim();
+      var err = document.getElementById("login-error");
+      if (!u || !p) { err.classList.add("show"); return; }
+      err.classList.remove("show");
+      window.location.href = "clientes.html"; // demo: sin backend -> portal de ejemplo
+    });
+  }
 })();

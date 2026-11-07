@@ -252,8 +252,8 @@ p { max-width: 68ch; color: var(--text-soft); }
   box-shadow: var(--shadow-sm);
 }
 
-.brand { display: inline-flex; align-items: center; }
-.brand img { height: 80px; width: auto; }
+.brand { display: inline-flex; align-items: center; flex-shrink: 0; }
+.brand img { height: 60px; width: auto; flex-shrink: 0; }
 /* Swap de logo: blanco sobre hero/oscuro; a color solo en header sólido + tema claro.
    Nota: el display se controla SOLO en las clases (no en `.brand img`) para evitar
    que la mayor especificidad de `.brand img` muestre ambas versiones a la vez. */
@@ -290,7 +290,7 @@ p { max-width: 68ch; color: var(--text-soft); }
 
 .nav-toggle { display: none; }
 
-@media (max-width: 900px) {
+@media (max-width: 1040px) {
   .nav-toggle {
     display: inline-flex; flex-direction: column; gap: 5px; justify-content: center;
     width: 44px; height: 44px; background: transparent; border: 0; cursor: pointer; padding: 10px; order: 3;
@@ -610,3 +610,73 @@ body.home .nav-toggle span { background: var(--brand-navy); }
 @media (min-width: 901px) {
   body.home .nav a:not(.btn) { color: var(--brand-navy); }   /* menú oscuro sobre el header claro */
 }
+
+/* =================================================================
+   23. CLIENTES (acceso) + MODAL DE LOGIN   (agregado 2026-11-07)
+   ================================================================= */
+.nav-clientes { display: inline-flex; align-items: center; gap: .5rem; }
+.nav-clientes svg { width: 15px; height: 15px; opacity: .85; }
+
+/* Modal */
+.login-overlay {
+  position: fixed; inset: 0; z-index: 200; display: none;
+  align-items: center; justify-content: center; padding: 1.5rem;
+  background: rgba(6, 18, 36, .66); backdrop-filter: blur(4px);
+}
+.login-overlay.is-open { display: flex; }
+.login-card {
+  width: 100%; max-width: 420px; background: var(--surface-1, #fff);
+  color: var(--text, #0B2A4A); border-radius: 18px; padding: 2.2rem 2rem 1.8rem;
+  box-shadow: 0 30px 80px rgba(6,18,36,.45); position: relative;
+  border: 1px solid var(--border, rgba(11,42,74,.1));
+}
+[data-theme="dark"] .login-card { background: #0f2238; color: #eef2f7; border-color: rgba(255,255,255,.08); }
+.login-card__close {
+  position: absolute; top: 14px; right: 14px; width: 34px; height: 34px;
+  border: 0; border-radius: 50%; background: transparent; color: inherit;
+  font-size: 22px; line-height: 1; cursor: pointer; opacity: .6;
+}
+.login-card__close:hover { opacity: 1; }
+.login-card .brand-mark { height: 46px; margin-bottom: 1rem; }
+.login-card .brand-mark--white { display: none; }
+[data-theme="dark"] .login-card .brand-mark--color { display: none; }
+[data-theme="dark"] .login-card .brand-mark--white { display: block; }
+.login-card h2 { font-size: 1.5rem; margin: 0 0 .25rem; }
+.login-card p.sub { color: var(--text-soft, #5B6571); font-size: .95rem; margin: 0 0 1.3rem; }
+[data-theme="dark"] .login-card p.sub { color: #9fb4cd; }
+.login-field { margin-bottom: .95rem; }
+.login-field label { display: block; font-size: .8rem; font-weight: 600; letter-spacing: .02em; margin-bottom: .35rem; }
+.login-field input {
+  width: 100%; box-sizing: border-box; padding: .85rem .9rem; font-size: 1rem;
+  border: 1px solid var(--border-strong, #cdd5df); border-radius: 10px;
+  background: var(--surface-2, #fff); color: inherit; font-family: inherit;
+}
+[data-theme="dark"] .login-field input { background: #0b1b2e; border-color: rgba(255,255,255,.12); }
+.login-field input:focus { outline: none; border-color: var(--brand-orange, #E8772E); box-shadow: 0 0 0 3px rgba(232,119,46,.18); }
+.login-card .btn-login {
+  width: 100%; margin-top: .4rem; padding: .95rem; font-size: 1rem; font-weight: 600;
+  border: 0; border-radius: 10px; background: var(--brand-navy, #0B2A4A); color: #fff;
+  cursor: pointer; font-family: inherit; transition: background .2s;
+}
+.login-card .btn-login:hover { background: #0a3a66; }
+.login-note { font-size: .78rem; color: var(--text-soft, #98A2AE); text-align: center; margin: 1rem 0 0; }
+.login-error { font-size: .85rem; color: #d64531; margin: .2rem 0 .8rem; display: none; }
+.login-error.show { display: block; }
+
+/* =================================================================
+   24. NOTICIAS + PORTAL DE CLIENTES   (agregado 2026-11-07)
+   ================================================================= */
+.news-card { background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-lg, 16px); padding: var(--s-6, 1.6rem); display: flex; flex-direction: column; gap: .5rem; transition: transform .3s var(--ease-spring), box-shadow .3s var(--ease); }
+.news-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.news-card__tag { align-self: flex-start; font-family: "Roboto Mono", monospace; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--brand-orange); background: rgba(232,119,46,.12); padding: .3rem .65rem; border-radius: 999px; }
+.news-card__date { font-size: .8rem; color: var(--text-dim); margin-top: .3rem; }
+.news-card h3 { margin: .15rem 0 0; font-size: var(--t-lg, 1.3rem); }
+.news-card p { color: var(--text-soft); font-size: .95rem; margin: 0; flex: 1; }
+.news-card .link-arrow { margin-top: .7rem; }
+
+.portal-card { background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-lg, 16px); padding: var(--s-7, 2rem); }
+.portal-card__ico { display: inline-flex; width: 50px; height: 50px; align-items: center; justify-content: center; border-radius: 13px; background: rgba(70,198,245,.12); color: var(--tech, #46C6F5); margin-bottom: 1rem; }
+.portal-card__ico svg { width: 26px; height: 26px; }
+.portal-card h3 { margin: 0 0 .4rem; font-size: var(--t-lg, 1.3rem); }
+.portal-card p { color: var(--text-soft); font-size: .95rem; margin: 0; }
+.portal-note { margin-top: var(--s-7, 2rem); font-size: .85rem; color: var(--text-soft); padding: .9rem 1.1rem; border-left: 3px solid var(--brand-orange); background: rgba(232,119,46,.07); border-radius: 0 8px 8px 0; }
