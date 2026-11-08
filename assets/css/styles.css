@@ -695,3 +695,15 @@ body.home .nav-toggle span { background: var(--brand-navy); }
 .portal-card h3 { margin: 0 0 .4rem; font-size: var(--t-lg, 1.3rem); }
 .portal-card p { color: var(--text-soft); font-size: .95rem; margin: 0; }
 .portal-note { margin-top: var(--s-7, 2rem); font-size: .85rem; color: var(--text-soft); padding: .9rem 1.1rem; border-left: 3px solid var(--brand-orange); background: rgba(232,119,46,.07); border-radius: 0 8px 8px 0; }
+
+/* ===== 25. Biblioteca de proyectos: ficha de estudio (proyecto.html) ===== */
+.impact { list-style: none; margin: 0; padding: 0; }
+.estudio-figura { margin: var(--s-6) 0 0; border-radius: var(--radius-lg); overflow: hidden; background: var(--bg-elev-2); border: 1px solid var(--border); }
+.estudio-figura img { width: 100%; height: auto; display: block; }
+.estudio-figura figcaption { font-size: var(--t-xs); color: var(--text-soft); padding: .7rem 1rem; line-height: 1.45; }
+.project-card__ficha { color: #fff; font-weight: 600; order: 2; }
+
+/* Crédito visible de fotos de terceros (licencias CC) */
+.project-card__credit { font-size: .68rem; opacity: .78; letter-spacing: 0; }
+.project-credits { margin-top: 1.25rem; font-size: .78rem; line-height: 1.5; color: var(--gris-600); }
+.project-credits a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
