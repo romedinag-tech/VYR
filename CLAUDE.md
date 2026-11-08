@@ -21,6 +21,10 @@ Funcional y desplegable (HTML/CSS/JS vanilla, sin build, apto GitHub Pages). Git
 *El header (brand + nav) está duplicado en las 5 páginas y en las listas del footer → todo cambio de nav se replica en todas. CSS nuevo: secciones 23 (nav-clientes + modal) y 24 (noticias + portal).*
 *Pendientes de este bloque: contenido real de Noticias; teléfono/cifras a confirmar (Aprendizajes 2026-11-03); montar la auth real en cPanel; commit + push (no hecho aún).*
 
+**HERO ROTATIVO (2026-11-07, CSS/JS en `?v=11`)** — pedido de Rodrigo: el fondo cambia cada 6,5 s con fundido. **Fotos acordadas una por una con él** (regla: «antes de poner una foto acordemos cuáles»): (1) vialidad aérea actual (Unsplash, placeholder), (2) Biotrén sobre el puente del Biobío, (3) Vespucio Sur con la L4 del Metro, (4) Metro de Santiago, (5) Ruta 5 Norte, cuesta El Teniente. 2–5 son de Wikimedia Commons **CC BY-SA 4.0 → crédito visible obligatorio**: `.hero__credit` lo arma `main.js` desde `data-credit` (`título|autor|url|licencia|url licencia`). Archivos en `assets/img/hero/` (1.920 px, JPEG q80) con `CREDITOS.md`. Las 2–5 se cargan después del `load` (`data-src`), sin rotación con `prefers-reduced-motion`, pausa con la pestaña oculta. Velo izquierdo reforzado (fotos claras). **Ruta 5 aérea de verdad no hay en Commons**: si VyR tiene una propia o de dron, reemplaza a la 5.
+También se corrigió un desborde horizontal previo en móvil (la grilla de `#enfoque` medía 541 px en pantalla de 375): `.grid { grid-template-columns: minmax(0,1fr) }`. Medido: las 5 páginas sin desborde a 375 px.
+*Subido a GitHub el 2026-11-07.*
+
 ### firmas
 Firma de **Jorge Vera** instalada en su Roundcube. Para el resto del equipo están `firma-vyr-plantilla.html` (plantilla) y `generador-firma-vyr.html` (rellena 3 campos y copia). **Los tres ya están commiteados** (commit `35bbe44`).
 
@@ -35,7 +39,7 @@ Acceso a la **API de cPanel** configurado (token *unrestricted* en `~/.cpanel_vy
 - **Firmas:** `firma-vyr-plantilla.html`, `generador-firma-vyr.html`, `firma-jorge-vera.html`.
 - **Fotos de proyectos:** `assets/img/proyectos/` (32 `NN-slug.jpg` + `_indice.csv`).
 - **Token cPanel:** `C:\Users\Rodrigo\.cpanel_vyr.txt` (fuera del repo; NO commitear).
-- **Convención de despliegue web:** al editar `styles.css`/`main.js`, subir el cache-bust `?v=N` en los 3 HTML (va en **v=7**) y pedir Ctrl+F5.
+- **Convención de despliegue web:** al editar `styles.css`/`main.js`, subir el cache-bust `?v=N` en los 3 HTML (va en **v=11**) y pedir Ctrl+F5.
 
 ## Datos canónicos
 - **Logo del sitio** (header/footer/favicon): emblema multimodal → `assets/logo/vyr-simbolo.png` y `vyr-horizontal-nolema.png`.
@@ -56,13 +60,14 @@ Acceso a la **API de cPanel** configurado (token *unrestricted* en `~/.cpanel_vy
 
 - 2026-11-07 — **Vectorizar un logo PNG → SVG** (cuando no hay vector original): `vtracer` sirve, pero **segfault en Python 3.14**; corre bien con **Python 3.12** (`C:\Users\Rodrigo\AppData\Local\Programs\Python\Python312\python.exe`; el venv `transporte` no tiene pip). Aplanar el alfa sobre blanco antes de trazar y después **quitar del SVG la capa de fill blanco** para recuperar la transparencia. Resultado medido sobre `vr-logo.png`: **fiel en forma, transparencia OK, pero el degradado queda más plano y los bordes algo más duros** → sirve para el header web (a tamaño chico es indistinguible), no para impresión grande. Lo ideal sigue siendo el vector original del diseñador.
 
+- 2026-11-07 — **`.hero p` pisa a cualquier `<p>` dentro del hero** (especificidad 0-1-1 > 0-1-0): un crédito como `<p class="hero__credit">` salió a 20 px, con el color y el ancho del bajo-título. Elementos auxiliares del hero, como `<div>`. Y **con el panel del navegador oculto la ventana mide 0 px** y las capturas llegan con un cuadro de atraso: fijar el tamaño con `resize_window`, verificar por DOM (`getBoundingClientRect`, `naturalWidth`, clase activa) y usar la captura sólo como apoyo. **Wikimedia Commons responde 429** a ráfagas: pausa de ~4 s entre descargas y reintento.
 - 2026-11-07 — **Kit de logo vectorial por partes** (idea de Rodrigo: componentes separados para armar horizontal/vertical/icono): en `..\logo-vectorial\` → `infinito.svg`, `wordmark-vyr-blanco.svg` y `wordmark-vyr-navy.svg`. El logo completo (infinito + "V&R INGENIERÍA" + lema) existe sólo como la **imagen vertical de WhatsApp** (`..\WhatsApp Image 2026-08-25…jpeg`, fondo navy, texto blanco); de ahí se recortó y vectorizó el wordmark. **Vectorizar LETRAS: no usar modo color** (el leve sombreado de las letras rompe la traza — la "V" salió con un relleno interior falso, lo cachó Rodrigo). Hacer **máscara binaria por color** (blanco de las letras y naranjo del "&" por separado, umbral sobre el RGB) y trazar cada máscara con `colormode="binary"`, `filter_speckle=3` (más alto se come el acento de la "Í"). Así quedó fiel. **El infinito solo va incompleto** (le faltan las letras): en el header se usa infinito + wordmark. Para el header **por ahora se usa PNG** (decisión de Rodrigo), no el SVG.
 
 ## Cómo se ejecuta
 1. **Verlo en vivo** (siempre por HTTP, nunca `file://`): `python -m http.server 8777` en esta carpeta y abrir `http://localhost:8777/index.html` (también `proyectos.html` y `caso-acceso-norte.html`).
 2. **Editar** `index.html` / `proyectos.html` / `caso-acceso-norte.html`, `assets/css/styles.css`, `assets/js/main.js`.
-3. Al tocar CSS/JS, **subir el cache-bust `?v=N`** en los 3 HTML (va en **v=7**) y pedir Ctrl+F5 al cliente.
+3. Al tocar CSS/JS, **subir el cache-bust `?v=N`** en los 3 HTML (va en **v=11**) y pedir Ctrl+F5 al cliente.
 4. **Publicar:** `git push` por HTTPS (cuenta romedinag-tech) a `github.com/romedinag-tech/VYR`, rama `main`. GitHub Pages aún por activar.
 5. **Firmas:** se instalan en Roundcube activando el **modo HTML ANTES de pegar**; el logo va hospedado por URL pública.
 
-<!-- columna-vertebral: ultima_actualizacion=2026-11-03 commit=35bbe44 -->
+<!-- columna-vertebral: ultima_actualizacion=2026-11-07 commit=hero-rotativo -->

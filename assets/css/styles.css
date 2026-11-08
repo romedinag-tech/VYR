@@ -203,7 +203,7 @@ p { max-width: 68ch; color: var(--text-soft); }
 .section-head h2 { margin-top: var(--s-3); }
 .section-head p { margin-top: var(--s-4); }
 
-.grid { display: grid; gap: var(--s-5); }
+.grid { display: grid; gap: var(--s-5); grid-template-columns: minmax(0,1fr); } /* minmax(0,…): en móvil la columna no crece al min-content (desbordaba #enfoque a 541px en 375px) */
 @media (min-width: 720px) { .grid-2 { grid-template-columns: repeat(2,1fr); } }
 @media (min-width: 920px) { .grid-3 { grid-template-columns: repeat(3,1fr); } }
 
@@ -322,13 +322,28 @@ p { max-width: 68ch; color: var(--text-soft); }
 }
 .hero__media { position: absolute; inset: 0; z-index: 0; }
 .hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-/* Foto COMPLETA. Solo una sombra suave abajo-izquierda para que el texto se lea (no difumina la imagen). */
+/* Fondo rotativo (2026-11-07): capas superpuestas con fundido; main.js alterna .is-active */
+.hero__slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.6s ease-in-out; }
+.hero__slide.is-active { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .hero__slide { transition: none; } }
+/* Foto COMPLETA. Sombra abajo-izquierda para que el texto se lea; reforzada porque rotan fotos claras (cielo, calzada). */
 .hero::after {
   content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background:
-    linear-gradient(180deg, transparent 48%, rgba(6,11,19,.85) 100%),
-    linear-gradient(90deg, rgba(6,11,19,.5) 0%, rgba(6,11,19,.08) 40%, transparent 62%);
+    linear-gradient(180deg, transparent 42%, rgba(6,11,19,.88) 100%),
+    linear-gradient(90deg, rgba(6,11,19,.72) 0%, rgba(6,11,19,.4) 42%, transparent 72%);
 }
+/* Crédito de la foto vigente (exigido por CC BY-SA); vacío y oculto cuando la foto no lo requiere */
+.hero__credit {
+  position: absolute; left: var(--gutter); bottom: .55rem; z-index: 3; margin: 0;
+  max-width: calc(100% - 2 * var(--gutter)); font-size: 11px; line-height: 1.3;
+  color: rgba(255,255,255,.62); text-shadow: 0 1px 6px rgba(0,0,0,.6);
+  transition: opacity .6s ease;
+}
+.hero__credit:empty { display: none; }
+.hero__credit.is-fading { opacity: 0; }
+.hero__credit a { color: inherit; text-decoration: underline; text-decoration-color: rgba(255,255,255,.3); text-underline-offset: 2px; }
+.hero__credit a:hover { color: #fff; }
 .hero__topo { position: absolute; inset: 0; z-index: 2; opacity: .4; mix-blend-mode: screen; pointer-events: none; }
 .hero .container { position: relative; z-index: 3; padding-bottom: clamp(3rem, 6vh, 5rem); padding-top: 8.5rem; }
 .hero__inner { max-width: 40rem; }

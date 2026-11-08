@@ -12,7 +12,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="assets/logo/vr-icon-512.png" />
   <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=10" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=11" />
 </head>
 <body class="home">
   <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -44,7 +44,20 @@
   <main id="main">
     <!-- ============ HERO ============ -->
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero__media"><img src="assets/img/proyectos/30-interconexion-santiago-valparaiso.jpg" alt="" loading="eager" /></div>
+      <!-- Fondo rotativo: la 1ª carga de inmediato; las demás las carga main.js (data-src) tras el load.
+           Créditos y licencias en assets/img/hero/CREDITOS.md. Las CC BY-SA exigen el crédito visible (data-credit). -->
+      <div class="hero__media" data-hero-rotate>
+        <img class="hero__slide is-active" src="assets/img/proyectos/30-interconexion-santiago-valparaiso.jpg" alt="" loading="eager" fetchpriority="high" />
+        <img class="hero__slide" data-src="assets/img/hero/02-biotren-puente-biobio.jpg" alt="" decoding="async"
+             data-credit="Biotrén sobre el puente ferroviario del Biobío|Kabelleger / David Gubler|https://commons.wikimedia.org/wiki/File:EFE_CM-112_Juan_Pablo_II_-_Concepci%C3%B3n.jpg|CC BY-SA 4.0|https://creativecommons.org/licenses/by-sa/4.0/deed.es" />
+        <img class="hero__slide" data-src="assets/img/hero/03-vespucio-sur-metro-l4.jpg" alt="" decoding="async"
+             data-credit="Autopista Vespucio Sur y Línea 4 del Metro, La Florida|Carlos Figueroa Rojas|https://commons.wikimedia.org/wiki/File:Autopista_Vespucio_Sur,_La_Florida,_Santiago_20260213.jpg|CC BY-SA 4.0|https://creativecommons.org/licenses/by-sa/4.0/deed.es" />
+        <img class="hero__slide" data-src="assets/img/hero/04-metro-santiago.jpg" alt="" decoding="async"
+             data-credit="Metro de Santiago, entre Los Héroes y Toesca|ShootingStarMax|https://commons.wikimedia.org/wiki/File:Tren_NS-74_del_Metro_de_Santiago,_entre_estaciones_Los_H%C3%A9roes_y_Toesca.jpg|CC BY-SA 4.0|https://creativecommons.org/licenses/by-sa/4.0/deed.es" />
+        <img class="hero__slide" data-src="assets/img/hero/05-ruta5-cuesta-el-teniente.jpg" alt="" decoding="async"
+             data-credit="Ruta 5 Norte, cuesta El Teniente|Sfs90|https://commons.wikimedia.org/wiki/File:Ruta_5_Norte,_cuesta_El_Teniente.jpg|CC BY-SA 4.0|https://creativecommons.org/licenses/by-sa/4.0/deed.es" />
+      </div>
+      <div class="hero__credit" aria-live="off"></div>
       <svg class="hero__topo" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
         <g fill="none" stroke="#8FB4DC" stroke-width="1">
           <path d="M-50 620 C 300 560, 520 700, 820 600 S 1300 520, 1500 600" opacity=".5"/>
@@ -401,6 +414,6 @@
 
   <div class="last-update" role="status" aria-label="Última actualización del prototipo">Actualizado <span data-lu>—</span></div>
 
-  <script src="assets/js/main.js?v=10" defer></script>
+  <script src="assets/js/main.js?v=11" defer></script>
 </body>
 </html>
