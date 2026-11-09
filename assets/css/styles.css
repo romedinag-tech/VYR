@@ -775,3 +775,4 @@ body.nav-open .site-header, body.nav-open .site-header.is-solid { -webkit-backdr
 .imiv-faq details:first-of-type { margin-top: 1.25rem; border-top: 1px solid var(--border); }
 .imiv-faq summary { cursor: pointer; font-weight: 600; font-size: 1.05rem; list-style-position: outside; }
 .imiv-faq details[open] summary { margin-bottom: .6rem; }
+.consultora--isa { background: #003087; border-color: #003087; }
