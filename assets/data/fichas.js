@@ -1,8 +1,4 @@
-/* Biblioteca de proyectos V&R — fichas de estudios (fuente única de proyecto.html).
-   Cada ficha sale del Informe Ejecutivo del estudio (Biblioteca Digital de Transportes, MTT/SECTRA).
-   Cada cifra cita su página en `pag`. Borradores y destilados: ../biblioteca-proyectos/ (fuera del sitio).
-   Para agregar una ficha: copiar un bloque, completar y enlazar la tarjeta en proyectos.html con
-   href="proyecto.html?id=<id>". */
+/* Fichas de estudios de V&R Ingeniería (fuente de proyecto.html). */
 window.VYR_FICHAS = {
 
   "fesur-coronel-lota": {
