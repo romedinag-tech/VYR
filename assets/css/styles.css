@@ -795,3 +795,5 @@ body.nav-open .site-header, body.nav-open .site-header.is-solid { -webkit-backdr
 .imiv-lista--simple li::before { content: ""; position: absolute; left: 0; top: .65em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
 .imiv-lista--simple a, .imiv-caja a { color: var(--accent); }
 .service__mas { display: inline-flex; margin-top: .9rem; font-weight: 600; font-size: var(--t-sm); color: var(--accent); }
+/* Portada: frase de búsqueda visible sobre el título (2026-11-09) */
+.hero__kicker { margin-bottom: 1rem; font-family: var(--font-display); font-size: var(--t-sm); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #F2A267; text-shadow: 0 1px 12px rgba(0,0,0,.55); }
