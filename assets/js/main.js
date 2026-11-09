@@ -303,13 +303,11 @@
       '<div class="login-card contacto-card" role="dialog" aria-modal="true" aria-labelledby="co-title">' +
       '<button class="login-card__close" type="button" aria-label="Cerrar">×</button>' +
       '<h2 id="co-title">Escríbenos</h2>' +
-      '<p class="sub">Cuéntanos sobre tu proyecto. Te responderemos a la brevedad.</p>' +
+      '<p class="sub">Déjanos tu mensaje y te contactamos.</p>' +
       '<form id="co-form" novalidate>' +
-      '<div class="login-field"><label for="co-nombre">Nombre *</label><input id="co-nombre" name="nombre" autocomplete="name" maxlength="100" required /></div>' +
-      '<div class="login-field"><label for="co-correo">Correo *</label><input id="co-correo" name="correo" type="email" autocomplete="email" maxlength="150" required /></div>' +
-      '<div class="co-2"><div class="login-field"><label for="co-org">Institución o empresa</label><input id="co-org" name="organizacion" autocomplete="organization" maxlength="150" /></div>' +
-      '<div class="login-field"><label for="co-fono">Teléfono</label><input id="co-fono" name="telefono" type="tel" autocomplete="tel" maxlength="40" /></div></div>' +
-      '<div class="login-field"><label for="co-msg">Mensaje *</label><textarea id="co-msg" name="mensaje" rows="5" maxlength="4000" required></textarea></div>' +
+      '<div class="login-field"><label for="co-nombre">Nombre</label><input id="co-nombre" name="nombre" autocomplete="name" maxlength="100" required /></div>' +
+      '<div class="login-field"><label for="co-contacto">Correo o teléfono</label><input id="co-contacto" name="contacto" autocomplete="email" maxlength="150" required /></div>' +
+      '<div class="login-field"><label for="co-msg">Mensaje</label><textarea id="co-msg" name="mensaje" rows="4" maxlength="4000" required></textarea></div>' +
       '<div class="co-trampa" aria-hidden="true"><label for="co-web">No completar</label><input id="co-web" name="sitio_web" tabindex="-1" autocomplete="off" /></div>' +
       '<p class="login-error" id="co-error" role="alert"></p>' +
       '<button class="btn-login" type="submit">Enviar mensaje</button>' +
@@ -345,9 +343,10 @@
       e.preventDefault();
       var faltan = [];
       if (coForm.nombre.value.trim().length < 2) faltan.push("tu nombre");
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(coForm.correo.value.trim())) faltan.push("un correo válido");
-      if (coForm.mensaje.value.trim().length < 10) faltan.push("un mensaje de al menos 10 caracteres");
-      if (faltan.length) { falla("Falta " + faltan.join(", ") + "."); return; }
+      var ct = coForm.contacto.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ct) && ct.replace(/\D/g, "").length < 8) faltan.push("un correo o un teléfono");
+      if (coForm.mensaje.value.trim().length < 2) faltan.push("tu mensaje");
+      if (faltan.length) { falla("Falta " + (faltan.length > 1 ? faltan.slice(0, -1).join(", ") + " y " + faltan[faltan.length - 1] : faltan[0]) + "."); return; }
       var btn = coForm.querySelector("button[type=submit]");
       btn.disabled = true; btn.textContent = "Enviando…";
       var envia = function () {
