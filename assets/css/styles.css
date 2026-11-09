@@ -1,8 +1,8 @@
 /* =================================================================
-   VyR Ingeniería — Sistema de diseño premium (dark-first + light)
+   VyR Ingeniería — Sistema de diseño (dark-first + light)
    Vanilla CSS · mobile-first · tematizable con [data-theme]
    -----------------------------------------------------------------
-   Técnicas premium destacadas:
+   Técnicas destacadas:
    · Tokens SEMÁNTICOS que se reasignan por tema (un solo set de
      componentes sirve para oscuro y claro).
    · Glassmorphism en el header (backdrop-filter: blur + saturate).
@@ -72,7 +72,7 @@
   --glass: rgba(10,16,27,.62);
   --glass-border: rgba(255,255,255,.08);
 
-  /* Sombras: gran radio + baja opacidad = "soft shadow" premium */
+  /* Sombras: gran radio + baja opacidad = "soft shadow" */
   --shadow-sm: 0 1px 2px rgba(0,0,0,.4);
   --shadow-md: 0 16px 40px -14px rgba(0,0,0,.6);
   --shadow-lg: 0 30px 70px -20px rgba(0,0,0,.7);
@@ -164,7 +164,7 @@ ul { list-style: none; padding: 0; }
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: 600; line-height: 1.06;
-  letter-spacing: -0.025em;     /* tracking negativo = titulares más “premium” */
+  letter-spacing: -0.025em;     /* tracking negativo = titulares más “” */
   color: var(--text);
   text-wrap: balance;            /* evita líneas huérfanas en encabezados */
 }
@@ -707,3 +707,5 @@ body.home .nav-toggle span { background: var(--brand-navy); }
 .project-card__credit { font-size: .68rem; opacity: .78; letter-spacing: 0; }
 .project-credits { margin-top: 1.25rem; font-size: .78rem; line-height: 1.5; color: var(--gris-600); }
 .project-credits a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+/* Crédito de foto de terceros en una tipología */
+.tcard__credit { position: absolute; bottom: 8px; right: 12px; z-index: 1; max-width: 58%; text-align: right; font-size: .62rem; line-height: 1.25; color: #C7D2E2; }

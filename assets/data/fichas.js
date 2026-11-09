@@ -5,6 +5,32 @@
    href="proyecto.html?id=<id>". */
 window.VYR_FICHAS = {
 
+  "fesur-coronel-lota": {
+    n: 28,
+    titulo: "Prefactibilidad del corredor ferroviario de transporte público",
+    ciudad: "Coronel–Lota", region: "Biobío",
+    mandante: "Ferrocarriles del Sur S.A. (FESUR)",
+    anio: "2015–2017",
+    consultor: "V&R Ingeniería",
+    tipologia: "Sistemas ferroviarios",
+    etapa: "Prefactibilidad",
+    tags: ["Ferroviario", "Transporte público", "Ingeniería de tránsito", "Evaluación social y privada"],
+    objetivo: "Realizar una evaluación económica para determinar la rentabilidad social y privada asociada a la extensión del servicio ferroviario del Biotrén entre Coronel y Lota.",
+    desarrollo: [
+      "El estudio se ejecutó entre mayo de 2015 y mayo de 2017 para Ferrocarriles del Sur S.A. (FESUR).",
+      "Según el certificado del mandante, el trabajo se concentró en ingeniería de tránsito y en planificación de sistemas de transportes, con aportes de planificación general, planificación urbana y regional, y obras viales.",
+      "Para el mismo mandante, V&R desarrolló entre enero de 2017 y abril de 2018 el Estudio de Desnivelación de Cruces en la Comuna de Coronel, orientado a una solución vial que permita prescindir de los cruces a nivel."
+    ],
+    resultado: "Estudio terminado, con certificado de ejecución del mandante.",
+    cifras: [],
+    imagen: "assets/img/hero/02-biotren-puente-biobio.jpg",
+    imagen_alt: "Tren Biotrén cruzando el puente ferroviario sobre el río Biobío",
+    pie: "Biotrén sobre el puente ferroviario del Biobío",
+    credito: "Foto: Kabelleger / David Gubler, CC BY-SA 4.0 (imagen de contexto, no del estudio). Fuente del texto: certificado de Ferrocarriles del Sur S.A.",
+    fuente: "Certificado de Ferrocarriles del Sur S.A.",
+    pag: "certificados págs. 1 y 2 (estudio y desnivelación de cruces)"
+  },
+
   "la-tirana-iquique": {
     n: 14,
     titulo: "Mejoramiento de los ejes La Tirana y Cerro Dragón",

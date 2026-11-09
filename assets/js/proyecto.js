@@ -26,6 +26,7 @@
   $("f-objetivo").textContent = f.objetivo;
   f.tags.forEach(function (t) { $("f-tags").appendChild(el("span", "case-tag", t)); });
 
+  if (!f.cifras.length) $("f-cifras-wrap").hidden = true;
   f.cifras.forEach(function (c) {
     var li = el("li", "stat"), num = el("div", "stat__num", c.num);
     if (c.unit) num.appendChild(el("span", "unit", c.unit));
@@ -37,7 +38,7 @@
   $("f-resultado").textContent = f.resultado;
   $("f-img").src = f.imagen;
   $("f-img").alt = f.imagen_alt;
-  $("f-pie").textContent = f.pie + " · Fuente: " + f.fuente + ", estudio elaborado por " + f.consultor + ".";
+  $("f-pie").textContent = f.credito ? f.pie + " · " + f.credito : f.pie + " · Fuente: " + f.fuente + ", estudio elaborado por " + f.consultor + ".";
 
   [["Mandante", f.mandante], ["Ubicación", lugar], ["Año", f.anio], ["Consultor", f.consultor],
    ["Etapa", f.etapa], ["Tipología", f.tipologia]].forEach(function (r) {
