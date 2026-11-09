@@ -15,7 +15,7 @@
     }
   }
   // El tema inicial ya lo fija un script inline en <head> (anti-FOUC); aquí solo sincronizamos el botón.
-  applyTheme(root.getAttribute("data-theme") || "dark");
+  applyTheme(root.getAttribute("data-theme") || "light");
   var themeBtn = document.getElementById("themeToggle");
   if (themeBtn) {
     themeBtn.addEventListener("click", function () {
@@ -169,6 +169,32 @@
     track.addEventListener("scroll", sync, { passive: true });
     window.addEventListener("resize", sync);
     sync();
+
+    /* Giro automático: avanza una tarjeta cada 5 s y al llegar al final vuelve al inicio.
+       Se detiene con el mouse encima, con el foco dentro, tras tocarlo, con la pestaña oculta,
+       fuera de pantalla y con movimiento reducido. */
+    var AUTO = 5000, autoT = null, enPantalla = false, pausa = false, tocado = 0;
+    var reducido = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var avanza = function () {
+      if (pausa || !enPantalla || document.hidden || Date.now() - tocado < 12000) return;
+      var max = track.scrollWidth - track.clientWidth - 4;
+      if (track.scrollLeft >= max) track.scrollTo({ left: 0, behavior: "smooth" });
+      else track.scrollBy({ left: step(), behavior: "smooth" });
+    };
+    if (!reducido && track.scrollWidth > track.clientWidth + 4) {
+      autoT = setInterval(avanza, AUTO);
+      tip.addEventListener("mouseenter", function () { pausa = true; });
+      tip.addEventListener("mouseleave", function () { pausa = false; });
+      tip.addEventListener("focusin", function () { pausa = true; });
+      tip.addEventListener("focusout", function () { pausa = false; });
+      ["touchstart", "wheel"].forEach(function (ev) {
+        track.addEventListener(ev, function () { tocado = Date.now(); }, { passive: true });
+      });
+      [bPrev, bNext].forEach(function (bt) { bt.addEventListener("click", function () { tocado = Date.now(); }); });
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (es) { enPantalla = es[0].isIntersecting; }, { threshold: 0.4 }).observe(track);
+      } else { enPantalla = true; }
+    }
   }
 
   /* ---- Filtro de proyectos desde el hash (#f=token), p.ej. al venir del carrusel ---- */
@@ -233,6 +259,78 @@
       if (!u || !p) { err.classList.add("show"); return; }
       err.classList.remove("show");
       window.location.href = "clientes.html"; // demo: sin backend -> portal de ejemplo
+    });
+  }
+  /* ---- Formulario de contacto: «Escríbenos» abre el formulario; envía a contacto@ y a Luis Contreras ---- */
+  var contactLinks = document.querySelectorAll("[data-contacto]");
+  if (contactLinks.length) {
+    var co = document.createElement("div");
+    co.className = "login-overlay";
+    co.innerHTML =
+      '<div class="login-card contacto-card" role="dialog" aria-modal="true" aria-labelledby="co-title">' +
+      '<button class="login-card__close" type="button" aria-label="Cerrar">×</button>' +
+      '<h2 id="co-title">Escríbenos</h2>' +
+      '<p class="sub">Cuéntanos sobre tu proyecto. Te responderemos a la brevedad.</p>' +
+      '<form id="co-form" novalidate>' +
+      '<div class="login-field"><label for="co-nombre">Nombre *</label><input id="co-nombre" name="nombre" autocomplete="name" maxlength="100" required /></div>' +
+      '<div class="login-field"><label for="co-correo">Correo *</label><input id="co-correo" name="correo" type="email" autocomplete="email" maxlength="150" required /></div>' +
+      '<div class="co-2"><div class="login-field"><label for="co-org">Institución o empresa</label><input id="co-org" name="organizacion" autocomplete="organization" maxlength="150" /></div>' +
+      '<div class="login-field"><label for="co-fono">Teléfono</label><input id="co-fono" name="telefono" type="tel" autocomplete="tel" maxlength="40" /></div></div>' +
+      '<div class="login-field"><label for="co-msg">Mensaje *</label><textarea id="co-msg" name="mensaje" rows="5" maxlength="4000" required></textarea></div>' +
+      '<div class="co-trampa" aria-hidden="true"><label for="co-web">No completar</label><input id="co-web" name="sitio_web" tabindex="-1" autocomplete="off" /></div>' +
+      '<p class="login-error" id="co-error" role="alert"></p>' +
+      '<button class="btn-login" type="submit">Enviar mensaje</button>' +
+      '<p class="login-note">Usaremos estos datos sólo para responderte.</p>' +
+      '</form>' +
+      '<div class="co-ok" hidden><h2>¡Gracias!</h2><p class="sub">Recibimos tu mensaje y te responderemos a la brevedad.</p><button class="btn-login" type="button" data-co-cerrar>Cerrar</button></div>' +
+      '</div>';
+    document.body.appendChild(co);
+    var coForm = co.querySelector("#co-form"), coErr = co.querySelector("#co-error"), coOk = co.querySelector(".co-ok");
+    var ficha = null, coDe = null;
+    var coCab = [co.querySelector("#co-title"), co.querySelector(".contacto-card > p.sub")];
+    var pideFicha = function () {
+      return fetch("contacto.php", { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (j) { ficha = j; }).catch(function () { ficha = null; });
+    };
+    var falla = function (m) { coErr.innerHTML = m; coErr.classList.add("show"); };
+    var abreCo = function (e) {
+      e.preventDefault(); coDe = e.currentTarget; closeNav();
+      coForm.hidden = false; coOk.hidden = true; coErr.classList.remove("show"); coCab.forEach(function (x) { x.hidden = false; });
+      co.classList.add("is-open"); document.body.classList.add("nav-open");
+      pideFicha();
+      setTimeout(function () { document.getElementById("co-nombre").focus(); }, 30);
+    };
+    var cierraCo = function () {
+      co.classList.remove("is-open"); document.body.classList.remove("nav-open");
+      if (coDe) coDe.focus();
+    };
+    contactLinks.forEach(function (l) { l.addEventListener("click", abreCo); });
+    co.querySelector(".login-card__close").addEventListener("click", cierraCo);
+    co.querySelector("[data-co-cerrar]").addEventListener("click", cierraCo);
+    co.addEventListener("click", function (e) { if (e.target === co) cierraCo(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && co.classList.contains("is-open")) cierraCo(); });
+    coForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var faltan = [];
+      if (coForm.nombre.value.trim().length < 2) faltan.push("tu nombre");
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(coForm.correo.value.trim())) faltan.push("un correo válido");
+      if (coForm.mensaje.value.trim().length < 10) faltan.push("un mensaje de al menos 10 caracteres");
+      if (faltan.length) { falla("Falta " + faltan.join(", ") + "."); return; }
+      var btn = coForm.querySelector("button[type=submit]");
+      btn.disabled = true; btn.textContent = "Enviando…";
+      var envia = function () {
+        var fd = new FormData(coForm);
+        fd.append("t", ficha.t); fd.append("f", ficha.f);
+        return fetch("contacto.php", { method: "POST", body: fd }).then(function (r) { return r.json(); });
+      };
+      (ficha ? Promise.resolve() : pideFicha()).then(function () {
+        if (!ficha) throw new Error("sin ficha");
+        return envia();
+      }).then(function (j) {
+        if (j && j.ok) { coForm.reset(); coForm.hidden = true; coOk.hidden = false; coErr.classList.remove("show"); ficha = null; coCab.forEach(function (x) { x.hidden = true; }); }
+        else { falla((j && j.error) || "No pudimos enviar el mensaje."); }
+      }).catch(function () {
+        falla('No pudimos enviar el mensaje. Escríbenos directamente a <a href="mailto:contacto@vyringenieria.cl">contacto@vyringenieria.cl</a>.');
+      }).then(function () { btn.disabled = false; btn.textContent = "Enviar mensaje"; });
     });
   }
 })();
