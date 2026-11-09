@@ -789,3 +789,9 @@ body.nav-open .site-header, body.nav-open .site-header.is-solid { -webkit-backdr
 .persona__nombre { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--text); }
 .persona__rol { margin: .3rem 0 .7rem; font-size: var(--t-sm); font-weight: 600; color: var(--accent); line-height: 1.4; }
 .persona__resena { margin: 0; font-size: var(--t-sm); line-height: 1.6; color: var(--text-soft); }
+/* Páginas de servicio (2026-11-09): listas simples dentro de las cajas y enlace en las tarjetas de Servicios */
+.imiv-lista--simple { gap: .6rem; }
+.imiv-lista--simple li { padding: 0 0 0 1rem; border: 0; background: none; position: relative; }
+.imiv-lista--simple li::before { content: ""; position: absolute; left: 0; top: .65em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.imiv-lista--simple a, .imiv-caja a { color: var(--accent); }
+.service__mas { display: inline-flex; margin-top: .9rem; font-weight: 600; font-size: var(--t-sm); color: var(--accent); }
