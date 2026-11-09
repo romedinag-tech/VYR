@@ -149,50 +149,83 @@
     });
   }
 
-  /* ---- Carrusel de tipologías ---- */
+  /* ---- Carrusel de tipologías: infinito ----
+     Las tarjetas se duplican detrás de escena; al completar una vuelta el carrusel salta, sin animación,
+     a la misma posición del primer juego, así que después de la última tarjeta sigue la primera.
+     Avanza siempre cada 4 s (también con el mouse encima); se pausa 8 s tras usar flechas o arrastre, con el foco
+     de teclado dentro, con la pestaña oculta, fuera de pantalla y con movimiento reducido. */
   var tip = document.getElementById("tipologias");
   if (tip) {
     var track = tip.querySelector("[data-carousel-track]");
     var bPrev = tip.querySelector("[data-carousel-prev]");
     var bNext = tip.querySelector("[data-carousel-next]");
-    var step = function () {
-      var card = track.querySelector(".tcard");
-      return card ? card.getBoundingClientRect().width + 24 : 320; // ancho de tarjeta + gap (1.5rem)
+    var orig = Array.prototype.slice.call(track.querySelectorAll(".tcard"));
+    orig.forEach(function (c) {
+      var k = c.cloneNode(true);
+      k.setAttribute("aria-hidden", "true");
+      k.classList.add("tcard--copia");
+      Array.prototype.forEach.call(k.querySelectorAll("a"), function (a) { a.tabIndex = -1; });
+      track.appendChild(k);
+    });
+    var todas = function () { return track.querySelectorAll(".tcard"); };
+    var ancla = function () { return track.getBoundingClientRect().left + (parseFloat(getComputedStyle(track).scrollPaddingLeft) || 0); }; // donde se alinea el imán
+    var indice = function () {
+      var a = ancla(), cs = todas(), mejor = 0, dmin = Infinity;
+      for (var i = 0; i < cs.length; i++) { var dd = Math.abs(cs[i].getBoundingClientRect().left - a); if (dd < dmin) { dmin = dd; mejor = i; } }
+      return mejor;
     };
-    var sync = function () {
-      var max = track.scrollWidth - track.clientWidth - 4;
-      bPrev.disabled = track.scrollLeft <= 4;
-      bNext.disabled = track.scrollLeft >= max;
+    var vuelta = function () { var cs = todas(); return cs[orig.length].getBoundingClientRect().left - cs[0].getBoundingClientRect().left; };
+    var animando = false;
+    var fija = function (x) { // posición instantánea, sin animación ni imán
+      track.style.scrollBehavior = "auto"; track.style.scrollSnapType = "none";
+      track.scrollLeft = x;
     };
-    bPrev.addEventListener("click", function () { track.scrollBy({ left: -step(), behavior: "smooth" }); });
-    bNext.addEventListener("click", function () { track.scrollBy({ left: step(), behavior: "smooth" }); });
-    track.addEventListener("scroll", sync, { passive: true });
-    window.addEventListener("resize", sync);
-    sync();
+    var suelta = function () { track.style.scrollBehavior = ""; track.style.scrollSnapType = ""; };
+    var normaliza = function () {
+      if (animando) return;
+      if (indice() >= orig.length) { fija(track.scrollLeft - vuelta()); suelta(); }
+    };
+    var finScroll = null;
+    track.addEventListener("scroll", function () { if (animando) return; clearTimeout(finScroll); finScroll = setTimeout(normaliza, 150); }, { passive: true });
+    var mueve = function (dir) {
+      if (animando) return;
+      var i = indice();
+      if (dir < 0 && i === 0) { fija(track.scrollLeft + vuelta()); i = orig.length; }
+      var destino = todas()[i + dir];
+      if (!destino) return;
+      var ini = track.scrollLeft, d = destino.getBoundingClientRect().left - ancla(), t0 = null, dur = 600;
+      animando = true;
+      fija(ini);
+      var paso = function (ts) {
+        if (t0 === null) t0 = ts;
+        var k = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+        track.scrollLeft = ini + d * e;
+        if (k < 1) { requestAnimationFrame(paso); return; }
+        animando = false;
+        if (indice() >= orig.length) fija(track.scrollLeft - vuelta());
+        suelta();
+      };
+      requestAnimationFrame(paso);
+    };
+    var tocado = 0;
+    bPrev.disabled = false; bNext.disabled = false;
+    bPrev.addEventListener("click", function () { tocado = Date.now(); mueve(-1); });
+    bNext.addEventListener("click", function () { tocado = Date.now(); mueve(1); });
 
-    /* Giro automático: avanza una tarjeta cada 5 s y al llegar al final vuelve al inicio.
-       Se detiene con el mouse encima, con el foco dentro, tras tocarlo, con la pestaña oculta,
-       fuera de pantalla y con movimiento reducido. */
-    var AUTO = 5000, autoT = null, enPantalla = false, pausa = false, tocado = 0;
+    var AUTO = 4000, enPantalla = false, pausa = false;
     var reducido = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var avanza = function () {
-      if (pausa || !enPantalla || document.hidden || Date.now() - tocado < 12000) return;
-      var max = track.scrollWidth - track.clientWidth - 4;
-      if (track.scrollLeft >= max) track.scrollTo({ left: 0, behavior: "smooth" });
-      else track.scrollBy({ left: step(), behavior: "smooth" });
-    };
-    if (!reducido && track.scrollWidth > track.clientWidth + 4) {
-      autoT = setInterval(avanza, AUTO);
-      tip.addEventListener("mouseenter", function () { pausa = true; });
-      tip.addEventListener("mouseleave", function () { pausa = false; });
+    if (!reducido) {
+      setInterval(function () {
+        if (pausa || !enPantalla || document.hidden || Date.now() - tocado < 8000) return;
+        mueve(1);
+      }, AUTO);
       tip.addEventListener("focusin", function () { pausa = true; });
       tip.addEventListener("focusout", function () { pausa = false; });
       ["touchstart", "wheel"].forEach(function (ev) {
         track.addEventListener(ev, function () { tocado = Date.now(); }, { passive: true });
       });
-      [bPrev, bNext].forEach(function (bt) { bt.addEventListener("click", function () { tocado = Date.now(); }); });
       if ("IntersectionObserver" in window) {
-        new IntersectionObserver(function (es) { enPantalla = es[0].isIntersecting; }, { threshold: 0.4 }).observe(track);
+        new IntersectionObserver(function (es) { enPantalla = es[0].isIntersecting; }, { threshold: 0.3 }).observe(track);
       } else { enPantalla = true; }
     }
   }

@@ -17,7 +17,12 @@
   }
 
   var lugar = f.ciudad + ", " + f.region;
-  document.title = f.titulo + ", " + f.ciudad + " — VyR Ingeniería";
+  document.title = f.titulo + ", " + f.ciudad + " | V&R Ingeniería";
+  var md = document.querySelector('meta[name="description"]');
+  if (md) md.setAttribute("content", (f.objetivo || "").slice(0, 155));
+  var cn = document.createElement("link");
+  cn.rel = "canonical"; cn.href = "https://www.vyringenieria.cl/proyecto.html?id=" + encodeURIComponent(id);
+  document.head.appendChild(cn);
   $("f-hero").src = f.imagen;
   if (f.hero_pos) $("f-hero").style.objectPosition = f.hero_pos;
   $("f-crumb").textContent = f.titulo + ", " + f.ciudad;
